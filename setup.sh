@@ -1,4 +1,4 @@
-!/bin/bash
+!#/bin/bash
 
 echo "[*] Installing package dependencies..."
 apt-get install -y libssl-dev libffi-dev python-dev build-essential
