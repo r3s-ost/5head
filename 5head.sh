@@ -107,7 +107,12 @@ function cme_enum() {
         tmux new-window -n "cme_enum"
         tmux send-keys -t 5head:cme_enum 'PROMPT="%F{9}5head.sh%f > "' C-m
         tmux send-keys -t 5head:cme_enum 'clear' C-m
-
+        tmux send-keys -t 5head:cme_enum 'cd CrackMapExec; poetry run crackmapexec smb ../$targets >> ../loot/cme_enum.txt' C-m
+        tmux split-window -v -l 80%
+        tmux send-keys -t 5head:cme_enum 'PROMPT="%F{9}5head.sh%f > "' C-m
+        tmux send-keys -t 5head:cme_enum 'clear' C-m
+        tmux send-keys -t 5head:cme_enum 'echo -e "[*] Reading CrackMapExec enum results as they are discovered...\n[\!] Periodically press enter in pane above to ensure completion...\n"' C-m
+        tmux send-keys -t 5head:cme_enum 'tail -f loot/cme_enum.txt' C-m
 }
 
 function debug() {
@@ -119,11 +124,12 @@ function debug() {
 
 ## Main function area
 printf '
-   ___                                   __             __          __
-  / _ \ ___   ___  ___   ___ _ ___ _ ___/ / ___        / /  ___ _  / /   ___
- / , _// -_) / _ \/ -_) / _ `// _ `// _  / / -_)      / /__/ _ `/ / _ \ (_-<
-/_/|_| \__/ /_//_/\__/  \_, / \_,_/ \_,_/  \__/      /____/\_,_/ /_.__//___/
-                       /___/
+    ____                                  __        __          __
+   / __ \___  ____  ___  ____ _____ _____/ /__     / /   ____ _/ /_  _____
+  / /_/ / _ \/ __ \/ _ \/ __ `/ __ `/ __  / _ \   / /   / __ `/ __ \/ ___/
+ / _, _/  __/ / / /  __/ /_/ / /_/ / /_/ /  __/  / /___/ /_/ / /_/ (__  )
+/_/ |_|\___/_/ /_/\___/\__, /\__,_/\__,_/\___/  /_____/\__,_/_.___/____/
+                      /____/
 '
 
 echo "[*] Starting 5head.sh..."
