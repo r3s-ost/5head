@@ -93,41 +93,37 @@ ColorRed () {
 
 ## Main part executing inside of tmux
 function packet_cap() {
-        echo -e '[*] Starting packet captured in "packet_cap" window...\n\n'
+        echo -e '[*] Starting packet captured in "packet_cap" window...\n'
         tmux new-window -n "packet_cap"
         tmux send-keys -t 5head:packet_cap 'PROMPT="%F{9}5head.sh%f > "' C-m
         tmux send-keys -t 5head:packet_cap 'clear' C-m
-        tmux send-keys -t 5head:packet_cap 'echo "[*] Starting packet capture on ${interface}..."' C-m
-        tmux send-keys -t 5head:packet_cap 'echo "[*] Output will be written to loot/packet_capture.pcap"' C-m
+	tmux send-keys -t 5head:packet_cap 'bash -c "stty -echo;clear;echo -e \"[*] Starting packet capture on ${interface}...\n[*] Output will be written to loot/packet_capture.pcap\";stty echo"' C-m
         tmux send-keys -t 5head:packet_cap 'tcpdump -i $interface -w loot/packet_capture.pcap' C-m
 }
 
 function cme_enum() {
-        echo -e '[*] Enumerating targets with CrackMapExec...\n\n'
+        echo -e '[*] Enumerating targets with CrackMapExec...\n'
         tmux new-window -n "cme_enum"
         tmux send-keys -t 5head:cme_enum 'PROMPT="%F{9}5head.sh%f > "' C-m
         tmux send-keys -t 5head:cme_enum 'clear' C-m
-        tmux send-keys -t 5head:cme_enum 'cd CrackMapExec; poetry run crackmapexec smb ../$targets >> ../loot/cme_enum.txt' C-m
+        tmux send-keys -t 5head:cme_enum 'deps/cme smb $targets >> loot/cme_enum.txt' C-m
         tmux split-window -v -l 80%
-        tmux send-keys -t 5head:cme_enum 'PROMPT="%F{9}5head.sh%f > "' C-m
-        tmux send-keys -t 5head:cme_enum 'clear' C-m
-        tmux send-keys -t 5head:cme_enum 'echo -e "[*] Reading CrackMapExec enum results as they are discovered...\n[\!] Periodically press enter in pane above to ensure completion...\n"' C-m
-        tmux send-keys -t 5head:cme_enum 'tail -f loot/cme_enum.txt' C-m
+	tmux send-keys -t 5head:cme_enum 'bash -c "stty -echo;clear;echo -e \"[*] Listing output from CrackMapExec...\n[*] Press enter in window above periodically...\";stty echo"' C-m
+	tmux send-keys -t 5head:cme_enum 'tail -f loot/cme_enum.txt' C-m
 }
 
 function resp_ntlmrelay_1() {
-	echo -e '[*] Setting up Responder + Ntlmrelayx.py (SAM dump)...\n\n'
+	echo -e '[*] Setting up Responder + Ntlmrelayx.py (SAM dump)...\n'
 	tmux new-window -n "relay"
 	tmux send-keys -t 5head:relay 'PROMPT="%F{9}5head.sh%f > "' C-m
-	tmux send-keys -t 5head:relay 'clean' C-m
-	tmux send-keys -t 5head:relay '
+	tmux send-keys -t 5head:relay 'clear' C-m
+	
 }
 
 
 function debug() {
-        echo "test"
-        tmux show-environment
-        env
+	echo "exeucting sneaky"
+	sneaky cme_enum "test"
 }
 
 
@@ -179,3 +175,4 @@ menu
 ## To-do
 # 1. Need a dependenacy checker startup thing
 # 2. need env variable + variable safety checker exeter thing
+# 3. Add checker to ensure 5head.sh is executed from base wd of repo
