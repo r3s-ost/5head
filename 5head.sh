@@ -89,7 +89,56 @@ ColorRed () {
         echo -ne $red$1$clear
 }
 
-## Main part executing inside of tmux
+## Misc functions
+function var_setter() {
+	echo -e "Please enter value for $1: "
+	read temp_var
+	export $1=$temp_var
+	echo -e "[+] $1 is now set!"
+}
+
+
+function domain_var() {
+	echo -e "[*] Checking for required arguments..."
+	if [[ -z ${username} ]]; then
+		ColorRed '[-] ERROR: Username is not set\n[-] Would you like to set it?\n\n'
+		ColorGreen '1)' && echo -e " Yes"
+		ColorGreen '2)' && echo -e " No"
+		ColorCyan 'Choose an option: '
+	                read a
+        	        case $a in
+                	        1) var_setter 'username' ;;
+	                        2) return ;;
+	                        *) echo -e "Invalid command entered... exiting\n\n";
+	                esac
+	elif [[ -z ${password} ]]; then
+		ColorRed '[-] ERROR: Password is not set\n[-] Would you like to set it?\n\n'
+                ColorGreen '1)' && echo -e " Yes"
+                ColorGreen '2)' && echo -e " No"
+                ColorCyan 'Choose an option: '
+                        read a
+                        case $a in
+                                1) var_setter 'password' ;;
+                                2) return ;;
+                                *) echo -e "Invalid command entered... exiting\n\n";
+                        esac
+	elif [[ -z ${domain} ]]; then
+		ColorRed '[-] ERROR: Domain is not set\n'
+                ColorGreen '1)' && echo -e " Yes"
+                ColorGreen '2)' && echo -e " No"
+                ColorCyan 'Choose an option: '
+                        read a
+                        case $a in
+                                1) var_setter 'domain' ;;
+                                2) return ;;
+                                *) echo -e "Invalid command entered... exiting\n\n";
+                        esac
+	elif [[ -v username && -v password && -v domain ]]; then
+		echo -e "[+] Domain arguments are set!"
+	fi
+}
+
+## Enum submodule functions
 function packet_cap() {
         echo -e '[*] Starting packet captured in "packet_cap" window...\n'
         tmux new-window -n "packet_cap"
@@ -132,6 +181,8 @@ function cme_enum_mssql() {
         tmux send-keys -t 5head:cme_enum_mssql 'tail -f loot/cme_enum_mssql.txt' C-m
 }
 
+
+## Poison submodule functions
 function gen_targets() {
 	## SMB
 	echo "[*] Generating smb_targets.txt list..."
@@ -220,7 +271,7 @@ function ntlmrelay_smb_socks() {
                 tmux send-keys -t 5head:relay 'source deps/impacket-0.10.0/bin/activate' C-m
                 tmux send-keys -t 5head:relay 'ntlmrelayx.py -t ${solo_target} -smb2support -socks' C-m
         }
-        smb_socks_multi() {
+	smb_socks_multi() {
                 if test -f "loot/smb_targets.txt"; then
                         echo -e '[*] Setting up Responder + Ntlmrelayx.py to SMB targets file (socks)...\n'
                         tmux new-window -n "relay"
@@ -334,6 +385,8 @@ function mitm6_ldap_rbcd() {
         echo "temp"
 }
 
+
+## AD submodule functions
 function asreproast() {
         echo "temp"
 }
@@ -344,6 +397,10 @@ function kerberoast() {
 
 function share_enum() {
         echo "temp"
+}
+
+function adcs_enum() {
+	echo "temp"
 }
 
 function bloodhound_py() {
@@ -359,7 +416,23 @@ function ldap_sign_scan() {
 }
 
 function maq() {
-	echo "temp"
+	domain_var
+	if [[ -z ${dc} ]]; then
+                ColorRed '[-] ERROR: domain controller not specified.\nWould you like to specify one?\n'
+                ColorGreen '1)' && echo -e " Yes"
+                ColorGreen '2)' && echo -e " Exit"
+                ColorCyan 'Choose an option: '
+                        read a
+                        case $a in
+                                1) var_setter 'dc' ;;
+                                2) return ;;
+                                *) echo -e "Invalid command entered... exiting\n\n";
+                        esac
+                return
+	fi
+	tmux new-window -e "dc=${dc}" -e "domain=${domain}" -e "username=${username}" -e "password=${password}" -n "maq"
+        tmux send-keys -t 5head:maq 'bash -c "stty -echo;clear;echo -e \"[*] Enumerating MAQ with CrackMapExec...\n\";stty echo"' C-m
+	tmux send-keys -t 5head:maq 'deps/cme ldap $dc -u $username -p $password -d $domain -M maq' C-m
 }
 
 
@@ -476,16 +549,18 @@ $(ColorCyan 'Choose a function:') "
 		1) asreproast ; ad ;;
 		2) kerberoast ; ad ;;
 		3) share_enum ; ad ;;
-		4) bloodhound_py ; ad ;;
-		5) coerce_check ; ad ;;
-		6) ldap_sign_scan ; ad ;;
-		7) maq ; ad ;;
+		4) adcs_enum ; ad ;;
+		5) bloodhound_py ; ad ;;
+		6) coerce_check ; ad ;;
+		7) ldap_sign_scan ; ad ;;
+		8) maq ; ad ;;
 		0) tmux detach ;;
                 b) menu ;;
                 *) echo "Invalid command entered"; ad ;;
         esac
 }
 
+# public static void main(String[] args)
 menu
 
 ## To-do
