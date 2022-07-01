@@ -1,0 +1,976 @@
+Reading package lists...
+Building dependency tree...
+Reading state information...
+python3-venv is already the newest version (3.10.4-1+b1).
+The following packages were automatically installed and are no longer required:
+  libarmadillo10 libcharls2 libdap27 libdapclient6v5 libepsilon1 libgdal28
+  libgeos-3.9.1 libnetcdf18 libodbc1 libodbccr2 libpython3.9-dev libqhull8.0
+  libtbb2 libyara4 odbcinst odbcinst1debian2 python-mpltoolkits.basemap-data
+  python-pkginfo-doc python3-aiocmd python3-aioconsole python3-aiowinreg
+  python3-asciitree python3-asysocks python3-cachy python3-cleo python3-clikit
+  python3-crashtest python3-llvmlite python3-lockfile python3-lsassy
+  python3-minidump python3-minikerberos python3-msldap python3-neo4j
+  python3-neobolt python3-neotime python3-ntlm-auth python3-pastel
+  python3-pkginfo python3-poetry-core python3-pylev python3-pylnk
+  python3-pyproj python3-pypsrp python3-pypykatz python3-pyshp
+  python3-pywerview python3-requests-ntlm python3-shellingham python3-spnego
+  python3-tomlkit python3-winacl python3-xmltodict python3.9-dev ruby2.7
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 1440 not upgraded.
+Archive:  deps/cme-ubuntu-latest.zip
+  inflating: deps/cme                
+impacket-0.10.0/
+impacket-0.10.0/ChangeLog.md
+impacket-0.10.0/LICENSE
+impacket-0.10.0/MANIFEST.in
+impacket-0.10.0/PKG-INFO
+impacket-0.10.0/README.md
+impacket-0.10.0/SECURITY.md
+impacket-0.10.0/TESTING.md
+impacket-0.10.0/examples/
+impacket-0.10.0/examples/Get-GPPPassword.py
+impacket-0.10.0/examples/GetADUsers.py
+impacket-0.10.0/examples/GetNPUsers.py
+impacket-0.10.0/examples/GetUserSPNs.py
+impacket-0.10.0/examples/addcomputer.py
+impacket-0.10.0/examples/atexec.py
+impacket-0.10.0/examples/dcomexec.py
+impacket-0.10.0/examples/dpapi.py
+impacket-0.10.0/examples/esentutl.py
+impacket-0.10.0/examples/exchanger.py
+impacket-0.10.0/examples/findDelegation.py
+impacket-0.10.0/examples/getArch.py
+impacket-0.10.0/examples/getPac.py
+impacket-0.10.0/examples/getST.py
+impacket-0.10.0/examples/getTGT.py
+impacket-0.10.0/examples/goldenPac.py
+impacket-0.10.0/examples/karmaSMB.py
+impacket-0.10.0/examples/keylistattack.py
+impacket-0.10.0/examples/kintercept.py
+impacket-0.10.0/examples/lookupsid.py
+impacket-0.10.0/examples/machine_role.py
+impacket-0.10.0/examples/mimikatz.py
+impacket-0.10.0/examples/mqtt_check.py
+impacket-0.10.0/examples/mssqlclient.py
+impacket-0.10.0/examples/mssqlinstance.py
+impacket-0.10.0/examples/netview.py
+impacket-0.10.0/examples/nmapAnswerMachine.py
+impacket-0.10.0/examples/ntfs-read.py
+impacket-0.10.0/examples/ntlmrelayx.py
+impacket-0.10.0/examples/ping.py
+impacket-0.10.0/examples/ping6.py
+impacket-0.10.0/examples/psexec.py
+impacket-0.10.0/examples/raiseChild.py
+impacket-0.10.0/examples/rbcd.py
+impacket-0.10.0/examples/rdp_check.py
+impacket-0.10.0/examples/reg.py
+impacket-0.10.0/examples/registry-read.py
+impacket-0.10.0/examples/rpcdump.py
+impacket-0.10.0/examples/rpcmap.py
+impacket-0.10.0/examples/sambaPipe.py
+impacket-0.10.0/examples/samrdump.py
+impacket-0.10.0/examples/secretsdump.py
+impacket-0.10.0/examples/services.py
+impacket-0.10.0/examples/smbclient.py
+impacket-0.10.0/examples/smbexec.py
+impacket-0.10.0/examples/smbpasswd.py
+impacket-0.10.0/examples/smbrelayx.py
+impacket-0.10.0/examples/smbserver.py
+impacket-0.10.0/examples/sniff.py
+impacket-0.10.0/examples/sniffer.py
+impacket-0.10.0/examples/split.py
+impacket-0.10.0/examples/ticketConverter.py
+impacket-0.10.0/examples/ticketer.py
+impacket-0.10.0/examples/wmiexec.py
+impacket-0.10.0/examples/wmipersist.py
+impacket-0.10.0/examples/wmiquery.py
+impacket-0.10.0/impacket/
+impacket-0.10.0/impacket/Dot11Crypto.py
+impacket-0.10.0/impacket/Dot11KeyManager.py
+impacket-0.10.0/impacket/ICMP6.py
+impacket-0.10.0/impacket/IP6.py
+impacket-0.10.0/impacket/IP6_Address.py
+impacket-0.10.0/impacket/IP6_Extension_Headers.py
+impacket-0.10.0/impacket/ImpactDecoder.py
+impacket-0.10.0/impacket/ImpactPacket.py
+impacket-0.10.0/impacket/NDP.py
+impacket-0.10.0/impacket/__init__.py
+impacket-0.10.0/impacket/cdp.py
+impacket-0.10.0/impacket/crypto.py
+impacket-0.10.0/impacket/dcerpc/
+impacket-0.10.0/impacket/dcerpc/__init__.py
+impacket-0.10.0/impacket/dcerpc/v5/
+impacket-0.10.0/impacket/dcerpc/v5/__init__.py
+impacket-0.10.0/impacket/dcerpc/v5/atsvc.py
+impacket-0.10.0/impacket/dcerpc/v5/bkrp.py
+impacket-0.10.0/impacket/dcerpc/v5/dcom/
+impacket-0.10.0/impacket/dcerpc/v5/dcom/__init__.py
+impacket-0.10.0/impacket/dcerpc/v5/dcom/comev.py
+impacket-0.10.0/impacket/dcerpc/v5/dcom/oaut.py
+impacket-0.10.0/impacket/dcerpc/v5/dcom/scmp.py
+impacket-0.10.0/impacket/dcerpc/v5/dcom/vds.py
+impacket-0.10.0/impacket/dcerpc/v5/dcom/wmi.py
+impacket-0.10.0/impacket/dcerpc/v5/dcomrt.py
+impacket-0.10.0/impacket/dcerpc/v5/dhcpm.py
+impacket-0.10.0/impacket/dcerpc/v5/drsuapi.py
+impacket-0.10.0/impacket/dcerpc/v5/dssp.py
+impacket-0.10.0/impacket/dcerpc/v5/dtypes.py
+impacket-0.10.0/impacket/dcerpc/v5/enum.py
+impacket-0.10.0/impacket/dcerpc/v5/epm.py
+impacket-0.10.0/impacket/dcerpc/v5/even.py
+impacket-0.10.0/impacket/dcerpc/v5/even6.py
+impacket-0.10.0/impacket/dcerpc/v5/iphlp.py
+impacket-0.10.0/impacket/dcerpc/v5/lsad.py
+impacket-0.10.0/impacket/dcerpc/v5/lsat.py
+impacket-0.10.0/impacket/dcerpc/v5/mgmt.py
+impacket-0.10.0/impacket/dcerpc/v5/mimilib.py
+impacket-0.10.0/impacket/dcerpc/v5/ndr.py
+impacket-0.10.0/impacket/dcerpc/v5/nrpc.py
+impacket-0.10.0/impacket/dcerpc/v5/nspi.py
+impacket-0.10.0/impacket/dcerpc/v5/oxabref.py
+impacket-0.10.0/impacket/dcerpc/v5/par.py
+impacket-0.10.0/impacket/dcerpc/v5/rpch.py
+impacket-0.10.0/impacket/dcerpc/v5/rpcrt.py
+impacket-0.10.0/impacket/dcerpc/v5/rprn.py
+impacket-0.10.0/impacket/dcerpc/v5/rrp.py
+impacket-0.10.0/impacket/dcerpc/v5/samr.py
+impacket-0.10.0/impacket/dcerpc/v5/sasec.py
+impacket-0.10.0/impacket/dcerpc/v5/scmr.py
+impacket-0.10.0/impacket/dcerpc/v5/srvs.py
+impacket-0.10.0/impacket/dcerpc/v5/transport.py
+impacket-0.10.0/impacket/dcerpc/v5/tsch.py
+impacket-0.10.0/impacket/dcerpc/v5/wkst.py
+impacket-0.10.0/impacket/dhcp.py
+impacket-0.10.0/impacket/dns.py
+impacket-0.10.0/impacket/dot11.py
+impacket-0.10.0/impacket/dpapi.py
+impacket-0.10.0/impacket/eap.py
+impacket-0.10.0/impacket/ese.py
+impacket-0.10.0/impacket/examples/
+impacket-0.10.0/impacket/examples/__init__.py
+impacket-0.10.0/impacket/examples/ldap_shell.py
+impacket-0.10.0/impacket/examples/logger.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/
+impacket-0.10.0/impacket/examples/ntlmrelayx/__init__.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/__init__.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/dcsyncattack.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/httpattack.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/httpattacks/
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/httpattacks/__init__.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/httpattacks/adcsattack.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/imapattack.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/ldapattack.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/mssqlattack.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/rpcattack.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/smbattack.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/clients/
+impacket-0.10.0/impacket/examples/ntlmrelayx/clients/__init__.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/clients/dcsyncclient.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/clients/httprelayclient.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/clients/imaprelayclient.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/clients/ldaprelayclient.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/clients/mssqlrelayclient.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/clients/rpcrelayclient.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/clients/smbrelayclient.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/clients/smtprelayclient.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/__init__.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/httprelayserver.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/rawrelayserver.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/smbrelayserver.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/socksplugins/
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/socksplugins/__init__.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/socksplugins/http.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/socksplugins/https.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/socksplugins/imap.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/socksplugins/imaps.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/socksplugins/mssql.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/socksplugins/smb.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/socksplugins/smtp.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/socksserver.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/wcfrelayserver.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/utils/
+impacket-0.10.0/impacket/examples/ntlmrelayx/utils/__init__.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/utils/config.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/utils/enum.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/utils/ssl.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/utils/targetsutils.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/utils/tcpshell.py
+impacket-0.10.0/impacket/examples/os_ident.py
+impacket-0.10.0/impacket/examples/remcomsvc.py
+impacket-0.10.0/impacket/examples/rpcdatabase.py
+impacket-0.10.0/impacket/examples/secretsdump.py
+impacket-0.10.0/impacket/examples/serviceinstall.py
+impacket-0.10.0/impacket/examples/smbclient.py
+impacket-0.10.0/impacket/examples/utils.py
+impacket-0.10.0/impacket/helper.py
+impacket-0.10.0/impacket/hresult_errors.py
+impacket-0.10.0/impacket/http.py
+impacket-0.10.0/impacket/krb5/
+impacket-0.10.0/impacket/krb5/__init__.py
+impacket-0.10.0/impacket/krb5/asn1.py
+impacket-0.10.0/impacket/krb5/ccache.py
+impacket-0.10.0/impacket/krb5/constants.py
+impacket-0.10.0/impacket/krb5/crypto.py
+impacket-0.10.0/impacket/krb5/gssapi.py
+impacket-0.10.0/impacket/krb5/kerberosv5.py
+impacket-0.10.0/impacket/krb5/keytab.py
+impacket-0.10.0/impacket/krb5/pac.py
+impacket-0.10.0/impacket/krb5/types.py
+impacket-0.10.0/impacket/ldap/
+impacket-0.10.0/impacket/ldap/__init__.py
+impacket-0.10.0/impacket/ldap/ldap.py
+impacket-0.10.0/impacket/ldap/ldapasn1.py
+impacket-0.10.0/impacket/ldap/ldaptypes.py
+impacket-0.10.0/impacket/mapi_constants.py
+impacket-0.10.0/impacket/mqtt.py
+impacket-0.10.0/impacket/nmb.py
+impacket-0.10.0/impacket/nt_errors.py
+impacket-0.10.0/impacket/ntlm.py
+impacket-0.10.0/impacket/pcap_linktypes.py
+impacket-0.10.0/impacket/pcapfile.py
+impacket-0.10.0/impacket/smb.py
+impacket-0.10.0/impacket/smb3.py
+impacket-0.10.0/impacket/smb3structs.py
+impacket-0.10.0/impacket/smbconnection.py
+impacket-0.10.0/impacket/smbserver.py
+impacket-0.10.0/impacket/spnego.py
+impacket-0.10.0/impacket/structure.py
+impacket-0.10.0/impacket/system_errors.py
+impacket-0.10.0/impacket/tds.py
+impacket-0.10.0/impacket/uuid.py
+impacket-0.10.0/impacket/version.py
+impacket-0.10.0/impacket/winregistry.py
+impacket-0.10.0/impacket/wps.py
+impacket-0.10.0/impacket.egg-info/
+impacket-0.10.0/impacket.egg-info/PKG-INFO
+impacket-0.10.0/impacket.egg-info/SOURCES.txt
+impacket-0.10.0/impacket.egg-info/dependency_links.txt
+impacket-0.10.0/impacket.egg-info/requires.txt
+impacket-0.10.0/impacket.egg-info/top_level.txt
+impacket-0.10.0/requirements.txt
+impacket-0.10.0/setup.cfg
+impacket-0.10.0/setup.py
+impacket-0.10.0/tests/
+impacket-0.10.0/tests/ImpactPacket/
+impacket-0.10.0/tests/ImpactPacket/__init__.py
+impacket-0.10.0/tests/ImpactPacket/test_ICMP6.py
+impacket-0.10.0/tests/ImpactPacket/test_IP6.py
+impacket-0.10.0/tests/ImpactPacket/test_IP6_Address.py
+impacket-0.10.0/tests/ImpactPacket/test_IP6_Extension_Headers.py
+impacket-0.10.0/tests/ImpactPacket/test_TCP.py
+impacket-0.10.0/tests/ImpactPacket/test_TCP_bug_issue7.py
+impacket-0.10.0/tests/ImpactPacket/test_ethernet.py
+impacket-0.10.0/tests/SMB_RPC/
+impacket-0.10.0/tests/SMB_RPC/__init__.py
+impacket-0.10.0/tests/SMB_RPC/test_ldap.py
+impacket-0.10.0/tests/SMB_RPC/test_ndr.py
+impacket-0.10.0/tests/SMB_RPC/test_nmb.py
+impacket-0.10.0/tests/SMB_RPC/test_ntlm.py
+impacket-0.10.0/tests/SMB_RPC/test_rpch.py
+impacket-0.10.0/tests/SMB_RPC/test_rpcrt.py
+impacket-0.10.0/tests/SMB_RPC/test_secretsdump.py
+impacket-0.10.0/tests/SMB_RPC/test_smb.py
+impacket-0.10.0/tests/SMB_RPC/test_smbserver.py
+impacket-0.10.0/tests/SMB_RPC/test_spnego.py
+impacket-0.10.0/tests/SMB_RPC/test_wmi.py
+impacket-0.10.0/tests/__init__.py
+impacket-0.10.0/tests/conftest.py
+impacket-0.10.0/tests/data/
+impacket-0.10.0/tests/data/ccache-v1
+impacket-0.10.0/tests/data/ccache-v2
+impacket-0.10.0/tests/data/ccache-v3
+impacket-0.10.0/tests/data/ccache-v3-kirbi
+impacket-0.10.0/tests/data/ccache-v4
+impacket-0.10.0/tests/data/ccache-v4-kirbi
+impacket-0.10.0/tests/dcerpc/
+impacket-0.10.0/tests/dcerpc/__init__.py
+impacket-0.10.0/tests/dcerpc/test_bkrp.py
+impacket-0.10.0/tests/dcerpc/test_dcomrt.py
+impacket-0.10.0/tests/dcerpc/test_dhcpm.py
+impacket-0.10.0/tests/dcerpc/test_drsuapi.py
+impacket-0.10.0/tests/dcerpc/test_epm.py
+impacket-0.10.0/tests/dcerpc/test_even.py
+impacket-0.10.0/tests/dcerpc/test_even6.py
+impacket-0.10.0/tests/dcerpc/test_fasp.py
+impacket-0.10.0/tests/dcerpc/test_lsad.py
+impacket-0.10.0/tests/dcerpc/test_lsat.py
+impacket-0.10.0/tests/dcerpc/test_mgmt.py
+impacket-0.10.0/tests/dcerpc/test_mimilib.py
+impacket-0.10.0/tests/dcerpc/test_nrpc.py
+impacket-0.10.0/tests/dcerpc/test_par.py
+impacket-0.10.0/tests/dcerpc/test_rprn.py
+impacket-0.10.0/tests/dcerpc/test_rrp.py
+impacket-0.10.0/tests/dcerpc/test_samr.py
+impacket-0.10.0/tests/dcerpc/test_scmr.py
+impacket-0.10.0/tests/dcerpc/test_srvs.py
+impacket-0.10.0/tests/dcerpc/test_tsch.py
+impacket-0.10.0/tests/dcerpc/test_wkst.py
+impacket-0.10.0/tests/dcetests.cfg.template
+impacket-0.10.0/tests/dot11/
+impacket-0.10.0/tests/dot11/__init__.py
+impacket-0.10.0/tests/dot11/test_Dot11Base.py
+impacket-0.10.0/tests/dot11/test_Dot11Decoder.py
+impacket-0.10.0/tests/dot11/test_Dot11HierarchicalUpdate.py
+impacket-0.10.0/tests/dot11/test_FrameControlACK.py
+impacket-0.10.0/tests/dot11/test_FrameControlCFEnd.py
+impacket-0.10.0/tests/dot11/test_FrameControlCFEndCFACK.py
+impacket-0.10.0/tests/dot11/test_FrameControlCTS.py
+impacket-0.10.0/tests/dot11/test_FrameControlPSPoll.py
+impacket-0.10.0/tests/dot11/test_FrameControlRTS.py
+impacket-0.10.0/tests/dot11/test_FrameData.py
+impacket-0.10.0/tests/dot11/test_FrameManagement.py
+impacket-0.10.0/tests/dot11/test_FrameManagementAssociationRequest.py
+impacket-0.10.0/tests/dot11/test_FrameManagementAssociationResponse.py
+impacket-0.10.0/tests/dot11/test_FrameManagementAuthentication.py
+impacket-0.10.0/tests/dot11/test_FrameManagementDeauthentication.py
+impacket-0.10.0/tests/dot11/test_FrameManagementDisassociation.py
+impacket-0.10.0/tests/dot11/test_FrameManagementProbeRequest.py
+impacket-0.10.0/tests/dot11/test_FrameManagementProbeResponse.py
+impacket-0.10.0/tests/dot11/test_FrameManagementReassociationRequest.py
+impacket-0.10.0/tests/dot11/test_FrameManagementReassociationResponse.py
+impacket-0.10.0/tests/dot11/test_RadioTap.py
+impacket-0.10.0/tests/dot11/test_RadioTapDecoder.py
+impacket-0.10.0/tests/dot11/test_WEPDecoder.py
+impacket-0.10.0/tests/dot11/test_WEPEncoder.py
+impacket-0.10.0/tests/dot11/test_WPA.py
+impacket-0.10.0/tests/dot11/test_WPA2.py
+impacket-0.10.0/tests/dot11/test_helper.py
+impacket-0.10.0/tests/dot11/test_wps.py
+impacket-0.10.0/tests/misc/
+impacket-0.10.0/tests/misc/__init__.py
+impacket-0.10.0/tests/misc/test_ccache.py
+impacket-0.10.0/tests/misc/test_crypto.py
+impacket-0.10.0/tests/misc/test_dcerpc_v5_ndr.py
+impacket-0.10.0/tests/misc/test_dns.py
+impacket-0.10.0/tests/misc/test_dpapi.py
+impacket-0.10.0/tests/misc/test_ip6_address.py
+impacket-0.10.0/tests/misc/test_krb5_crypto.py
+impacket-0.10.0/tests/misc/test_structure.py
+impacket-0.10.0/tests/misc/test_utils.py
+impacket-0.10.0/tests/walkmodules.py
+impacket-0.10.0/tox.ini
+created virtual environment CPython3.10.5.final.0-64 in 84ms
+  creator CPython3Posix(dest=/home/kali/working/5head.sh/deps/impacket-0.10.0, clear=False, no_vcs_ignore=False, global=False)
+  seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=/root/.local/share/virtualenv)
+    added seed packages: pip==22.0.2, setuptools==59.6.0, wheel==0.37.1
+  activators BashActivator,CShellActivator,FishActivator,NushellActivator,PowerShellActivator,PythonActivator
+Processing /home/kali/working/5head.sh/deps/impacket-0.10.0
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting chardet
+  Using cached chardet-5.0.0-py3-none-any.whl (193 kB)
+Collecting flask>=1.0
+  Using cached Flask-2.1.2-py3-none-any.whl (95 kB)
+Collecting future
+  Using cached future-0.18.2-py3-none-any.whl
+Collecting ldap3!=2.5.0,!=2.5.2,!=2.6,>=2.5
+  Using cached ldap3-2.9.1-py2.py3-none-any.whl (432 kB)
+Collecting ldapdomaindump>=0.9.0
+  Using cached ldapdomaindump-0.9.3-py3-none-any.whl (18 kB)
+Collecting pyOpenSSL>=0.16.2
+  Using cached pyOpenSSL-22.0.0-py2.py3-none-any.whl (55 kB)
+Collecting pyasn1>=0.2.3
+  Using cached pyasn1-0.4.8-py2.py3-none-any.whl (77 kB)
+Collecting pycryptodomex
+  Using cached pycryptodomex-3.15.0-cp35-abi3-manylinux2010_x86_64.whl (2.3 MB)
+Collecting six
+  Using cached six-1.16.0-py2.py3-none-any.whl (11 kB)
+Collecting Jinja2>=3.0
+  Using cached Jinja2-3.1.2-py3-none-any.whl (133 kB)
+Collecting click>=8.0
+  Using cached click-8.1.3-py3-none-any.whl (96 kB)
+Collecting itsdangerous>=2.0
+  Using cached itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+Collecting Werkzeug>=2.0
+  Using cached Werkzeug-2.1.2-py3-none-any.whl (224 kB)
+Collecting dnspython
+  Using cached dnspython-2.2.1-py3-none-any.whl (269 kB)
+Collecting cryptography>=35.0
+  Using cached cryptography-37.0.2-cp36-abi3-manylinux_2_24_x86_64.whl (4.0 MB)
+Collecting cffi>=1.12
+  Using cached cffi-1.15.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (441 kB)
+Collecting MarkupSafe>=2.0
+  Using cached MarkupSafe-2.1.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+Collecting pycparser
+  Using cached pycparser-2.21-py2.py3-none-any.whl (118 kB)
+Building wheels for collected packages: impacket
+  Building wheel for impacket (setup.py): started
+  Building wheel for impacket (setup.py): finished with status 'done'
+  Created wheel for impacket: filename=impacket-0.10.0-py3-none-any.whl size=1452160 sha256=ea80aa9743de6149139ad58c31771540f3fd84c2b66bea722578f3b269ad1d09
+  Stored in directory: /root/.cache/pip/wheels/34/ec/18/ea5ff544737d4f2979d0598e41f9540fa6578e3105b6dd9155
+Successfully built impacket
+Installing collected packages: pyasn1, Werkzeug, six, pycryptodomex, pycparser, MarkupSafe, ldap3, itsdangerous, future, dnspython, click, chardet, ldapdomaindump, Jinja2, cffi, flask, cryptography, pyOpenSSL, impacket
+Successfully installed Jinja2-3.1.2 MarkupSafe-2.1.1 Werkzeug-2.1.2 cffi-1.15.1 chardet-5.0.0 click-8.1.3 cryptography-37.0.2 dnspython-2.2.1 flask-2.1.2 future-0.18.2 impacket-0.10.0 itsdangerous-2.1.2 ldap3-2.9.1 ldapdomaindump-0.9.3 pyOpenSSL-22.0.0 pyasn1-0.4.8 pycparser-2.21 pycryptodomex-3.15.0 six-1.16.0
+Collecting dsinternals
+  Using cached dsinternals-1.2.4-py3-none-any.whl
+Installing collected packages: dsinternals
+Successfully installed dsinternals-1.2.4
+2022-07-01T13:49:37,160 Using pip 22.1.2 from /usr/local/lib/python3.10/dist-packages/pip (python 3.10)
+2022-07-01T13:49:37,161 Non-user install because site-packages writeable
+2022-07-01T13:49:37,300 Created temporary directory: /tmp/pip-ephem-wheel-cache-xxyyeoh_
+2022-07-01T13:49:37,300 Created temporary directory: /tmp/pip-build-tracker-d6zq4xnc
+2022-07-01T13:49:37,300 Initialized build tracking at /tmp/pip-build-tracker-d6zq4xnc
+2022-07-01T13:49:37,300 Created build tracker: /tmp/pip-build-tracker-d6zq4xnc
+2022-07-01T13:49:37,300 Entered build tracker: /tmp/pip-build-tracker-d6zq4xnc
+2022-07-01T13:49:37,300 Created temporary directory: /tmp/pip-install-cpmsynlc
+2022-07-01T13:49:37,305 Requirement already satisfied: mitm6 in /usr/local/lib/python3.10/dist-packages (0.2.2)
+2022-07-01T13:49:37,307 Requirement already satisfied: scapy>=2.4 in /usr/lib/python3/dist-packages (from mitm6) (2.4.4)
+2022-07-01T13:49:37,307 Requirement already satisfied: netifaces in /usr/lib/python3/dist-packages (from mitm6) (0.11.0)
+2022-07-01T13:49:37,307 Requirement already satisfied: twisted in /usr/lib/python3/dist-packages (from mitm6) (22.4.0)
+2022-07-01T13:49:37,338 Created temporary directory: /tmp/pip-unpack-zlimxnbh
+2022-07-01T13:49:37,582 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+2022-07-01T13:49:37,584 Remote version of pip: 22.1.2
+2022-07-01T13:49:37,584 Local version of pip:  22.1.2
+2022-07-01T13:49:37,584 Was pip installed by pip? True
+2022-07-01T13:49:37,584 Removed build tracker: '/tmp/pip-build-tracker-d6zq4xnc'
+created virtual environment CPython3.10.5.final.0-64 in 85ms
+  creator CPython3Posix(dest=/home/kali/working/5head.sh/deps/LdapRelayScan, clear=False, no_vcs_ignore=False, global=False)
+  seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=/root/.local/share/virtualenv)
+    added seed packages: pip==22.0.2, setuptools==59.6.0, wheel==0.37.1
+  activators BashActivator,CShellActivator,FishActivator,NushellActivator,PowerShellActivator,PythonActivator
+Collecting dnspython
+  Using cached dnspython-2.2.1-py3-none-any.whl (269 kB)
+Collecting ldap3
+  Using cached ldap3-2.9.1-py2.py3-none-any.whl (432 kB)
+Collecting msldap
+  Using cached msldap-0.3.38-py3-none-any.whl (144 kB)
+Collecting pyasn1>=0.4.6
+  Using cached pyasn1-0.4.8-py2.py3-none-any.whl (77 kB)
+Collecting asn1crypto>=1.3.0
+  Using cached asn1crypto-1.5.1-py2.py3-none-any.whl (105 kB)
+Collecting prompt-toolkit>=3.0.2
+  Using cached prompt_toolkit-3.0.30-py3-none-any.whl (381 kB)
+Collecting unicrypto>=0.0.5
+  Using cached unicrypto-0.0.8-py3-none-any.whl (94 kB)
+Collecting winacl>=0.1.2
+  Using cached winacl-0.1.3-py3-none-any.whl (48 kB)
+Collecting asysocks>=0.1.7
+  Using cached asysocks-0.1.7-py3-none-any.whl (50 kB)
+Collecting tqdm
+  Using cached tqdm-4.64.0-py2.py3-none-any.whl (78 kB)
+Collecting minikerberos>=0.2.20
+  Using cached minikerberos-0.2.20-py3-none-any.whl (96 kB)
+Collecting wcwidth
+  Using cached wcwidth-0.2.5-py2.py3-none-any.whl (30 kB)
+Collecting oscrypto>=1.2.1
+  Using cached oscrypto-1.3.0-py2.py3-none-any.whl (194 kB)
+Collecting pycryptodomex
+  Using cached pycryptodomex-3.15.0-cp35-abi3-manylinux2010_x86_64.whl (2.3 MB)
+Installing collected packages: wcwidth, pyasn1, asn1crypto, winacl, tqdm, pycryptodomex, prompt-toolkit, oscrypto, ldap3, dnspython, asysocks, unicrypto, minikerberos, msldap
+Successfully installed asn1crypto-1.5.1 asysocks-0.1.7 dnspython-2.2.1 ldap3-2.9.1 minikerberos-0.2.20 msldap-0.3.38 oscrypto-1.3.0 prompt-toolkit-3.0.30 pyasn1-0.4.8 pycryptodomex-3.15.0 tqdm-4.64.0 unicrypto-0.0.8 wcwidth-0.2.5 winacl-0.1.3
+2022-07-01T13:49:41,139 Using pip 22.1.2 from /usr/local/lib/python3.10/dist-packages/pip (python 3.10)
+2022-07-01T13:49:41,139 Non-user install because site-packages writeable
+2022-07-01T13:49:41,282 Created temporary directory: /tmp/pip-ephem-wheel-cache-i60da0qn
+2022-07-01T13:49:41,282 Created temporary directory: /tmp/pip-build-tracker-2ur9nmuu
+2022-07-01T13:49:41,282 Initialized build tracking at /tmp/pip-build-tracker-2ur9nmuu
+2022-07-01T13:49:41,282 Created build tracker: /tmp/pip-build-tracker-2ur9nmuu
+2022-07-01T13:49:41,282 Entered build tracker: /tmp/pip-build-tracker-2ur9nmuu
+2022-07-01T13:49:41,283 Created temporary directory: /tmp/pip-install-ghgy7ds4
+2022-07-01T13:49:41,288 Requirement already satisfied: bloodhound in /usr/local/lib/python3.10/dist-packages (1.2.1)
+2022-07-01T13:49:41,291 Requirement already satisfied: impacket>=0.9.17 in /usr/local/lib/python3.10/dist-packages (from bloodhound) (0.10.0)
+2022-07-01T13:49:41,291 Requirement already satisfied: dnspython in /usr/lib/python3/dist-packages (from bloodhound) (2.0.0)
+2022-07-01T13:49:41,291 Requirement already satisfied: ldap3!=2.5.0,!=2.5.2,!=2.6,>=2.5 in /usr/lib/python3/dist-packages (from bloodhound) (2.8.1)
+2022-07-01T13:49:41,292 Requirement already satisfied: future in /usr/lib/python3/dist-packages (from bloodhound) (0.18.2)
+2022-07-01T13:49:41,292 Requirement already satisfied: pyasn1>=0.4 in /usr/lib/python3/dist-packages (from bloodhound) (0.4.8)
+2022-07-01T13:49:41,296 Requirement already satisfied: six in /usr/lib/python3/dist-packages (from impacket>=0.9.17->bloodhound) (1.16.0)
+2022-07-01T13:49:41,296 Requirement already satisfied: ldapdomaindump>=0.9.0 in /usr/lib/python3/dist-packages (from impacket>=0.9.17->bloodhound) (0.9.3)
+2022-07-01T13:49:41,296 Requirement already satisfied: flask>=1.0 in /usr/lib/python3/dist-packages (from impacket>=0.9.17->bloodhound) (1.1.2)
+2022-07-01T13:49:41,297 Requirement already satisfied: pyOpenSSL>=0.16.2 in /usr/lib/python3/dist-packages (from impacket>=0.9.17->bloodhound) (20.0.1)
+2022-07-01T13:49:41,297 Requirement already satisfied: pycryptodomex in /usr/lib/python3/dist-packages (from impacket>=0.9.17->bloodhound) (3.11.0)
+2022-07-01T13:49:41,298 Requirement already satisfied: chardet in /usr/lib/python3/dist-packages (from impacket>=0.9.17->bloodhound) (4.0.0)
+2022-07-01T13:49:41,306 Created temporary directory: /tmp/pip-unpack-f5lgjlik
+2022-07-01T13:49:41,580 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+2022-07-01T13:49:41,582 Remote version of pip: 22.1.2
+2022-07-01T13:49:41,582 Local version of pip:  22.1.2
+2022-07-01T13:49:41,583 Was pip installed by pip? True
+2022-07-01T13:49:41,583 Removed build tracker: '/tmp/pip-build-tracker-2ur9nmuu'
+Reading package lists...
+Building dependency tree...
+Reading state information...
+python3-venv is already the newest version (3.10.4-1+b1).
+The following packages were automatically installed and are no longer required:
+  libarmadillo10 libcharls2 libdap27 libdapclient6v5 libepsilon1 libgdal28
+  libgeos-3.9.1 libnetcdf18 libodbc1 libodbccr2 libpython3.9-dev libqhull8.0
+  libtbb2 libyara4 odbcinst odbcinst1debian2 python-mpltoolkits.basemap-data
+  python-pkginfo-doc python3-aiocmd python3-aioconsole python3-aiowinreg
+  python3-asciitree python3-asysocks python3-cachy python3-cleo python3-clikit
+  python3-crashtest python3-llvmlite python3-lockfile python3-lsassy
+  python3-minidump python3-minikerberos python3-msldap python3-neo4j
+  python3-neobolt python3-neotime python3-ntlm-auth python3-pastel
+  python3-pkginfo python3-poetry-core python3-pylev python3-pylnk
+  python3-pyproj python3-pypsrp python3-pypykatz python3-pyshp
+  python3-pywerview python3-requests-ntlm python3-shellingham python3-spnego
+  python3-tomlkit python3-winacl python3-xmltodict python3.9-dev ruby2.7
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 1440 not upgraded.
+Archive:  deps/cme-ubuntu-latest.zip
+  inflating: deps/cme                
+impacket-0.10.0/
+impacket-0.10.0/ChangeLog.md
+impacket-0.10.0/LICENSE
+impacket-0.10.0/MANIFEST.in
+impacket-0.10.0/PKG-INFO
+impacket-0.10.0/README.md
+impacket-0.10.0/SECURITY.md
+impacket-0.10.0/TESTING.md
+impacket-0.10.0/examples/
+impacket-0.10.0/examples/Get-GPPPassword.py
+impacket-0.10.0/examples/GetADUsers.py
+impacket-0.10.0/examples/GetNPUsers.py
+impacket-0.10.0/examples/GetUserSPNs.py
+impacket-0.10.0/examples/addcomputer.py
+impacket-0.10.0/examples/atexec.py
+impacket-0.10.0/examples/dcomexec.py
+impacket-0.10.0/examples/dpapi.py
+impacket-0.10.0/examples/esentutl.py
+impacket-0.10.0/examples/exchanger.py
+impacket-0.10.0/examples/findDelegation.py
+impacket-0.10.0/examples/getArch.py
+impacket-0.10.0/examples/getPac.py
+impacket-0.10.0/examples/getST.py
+impacket-0.10.0/examples/getTGT.py
+impacket-0.10.0/examples/goldenPac.py
+impacket-0.10.0/examples/karmaSMB.py
+impacket-0.10.0/examples/keylistattack.py
+impacket-0.10.0/examples/kintercept.py
+impacket-0.10.0/examples/lookupsid.py
+impacket-0.10.0/examples/machine_role.py
+impacket-0.10.0/examples/mimikatz.py
+impacket-0.10.0/examples/mqtt_check.py
+impacket-0.10.0/examples/mssqlclient.py
+impacket-0.10.0/examples/mssqlinstance.py
+impacket-0.10.0/examples/netview.py
+impacket-0.10.0/examples/nmapAnswerMachine.py
+impacket-0.10.0/examples/ntfs-read.py
+impacket-0.10.0/examples/ntlmrelayx.py
+impacket-0.10.0/examples/ping.py
+impacket-0.10.0/examples/ping6.py
+impacket-0.10.0/examples/psexec.py
+impacket-0.10.0/examples/raiseChild.py
+impacket-0.10.0/examples/rbcd.py
+impacket-0.10.0/examples/rdp_check.py
+impacket-0.10.0/examples/reg.py
+impacket-0.10.0/examples/registry-read.py
+impacket-0.10.0/examples/rpcdump.py
+impacket-0.10.0/examples/rpcmap.py
+impacket-0.10.0/examples/sambaPipe.py
+impacket-0.10.0/examples/samrdump.py
+impacket-0.10.0/examples/secretsdump.py
+impacket-0.10.0/examples/services.py
+impacket-0.10.0/examples/smbclient.py
+impacket-0.10.0/examples/smbexec.py
+impacket-0.10.0/examples/smbpasswd.py
+impacket-0.10.0/examples/smbrelayx.py
+impacket-0.10.0/examples/smbserver.py
+impacket-0.10.0/examples/sniff.py
+impacket-0.10.0/examples/sniffer.py
+impacket-0.10.0/examples/split.py
+impacket-0.10.0/examples/ticketConverter.py
+impacket-0.10.0/examples/ticketer.py
+impacket-0.10.0/examples/wmiexec.py
+impacket-0.10.0/examples/wmipersist.py
+impacket-0.10.0/examples/wmiquery.py
+impacket-0.10.0/impacket/
+impacket-0.10.0/impacket/Dot11Crypto.py
+impacket-0.10.0/impacket/Dot11KeyManager.py
+impacket-0.10.0/impacket/ICMP6.py
+impacket-0.10.0/impacket/IP6.py
+impacket-0.10.0/impacket/IP6_Address.py
+impacket-0.10.0/impacket/IP6_Extension_Headers.py
+impacket-0.10.0/impacket/ImpactDecoder.py
+impacket-0.10.0/impacket/ImpactPacket.py
+impacket-0.10.0/impacket/NDP.py
+impacket-0.10.0/impacket/__init__.py
+impacket-0.10.0/impacket/cdp.py
+impacket-0.10.0/impacket/crypto.py
+impacket-0.10.0/impacket/dcerpc/
+impacket-0.10.0/impacket/dcerpc/__init__.py
+impacket-0.10.0/impacket/dcerpc/v5/
+impacket-0.10.0/impacket/dcerpc/v5/__init__.py
+impacket-0.10.0/impacket/dcerpc/v5/atsvc.py
+impacket-0.10.0/impacket/dcerpc/v5/bkrp.py
+impacket-0.10.0/impacket/dcerpc/v5/dcom/
+impacket-0.10.0/impacket/dcerpc/v5/dcom/__init__.py
+impacket-0.10.0/impacket/dcerpc/v5/dcom/comev.py
+impacket-0.10.0/impacket/dcerpc/v5/dcom/oaut.py
+impacket-0.10.0/impacket/dcerpc/v5/dcom/scmp.py
+impacket-0.10.0/impacket/dcerpc/v5/dcom/vds.py
+impacket-0.10.0/impacket/dcerpc/v5/dcom/wmi.py
+impacket-0.10.0/impacket/dcerpc/v5/dcomrt.py
+impacket-0.10.0/impacket/dcerpc/v5/dhcpm.py
+impacket-0.10.0/impacket/dcerpc/v5/drsuapi.py
+impacket-0.10.0/impacket/dcerpc/v5/dssp.py
+impacket-0.10.0/impacket/dcerpc/v5/dtypes.py
+impacket-0.10.0/impacket/dcerpc/v5/enum.py
+impacket-0.10.0/impacket/dcerpc/v5/epm.py
+impacket-0.10.0/impacket/dcerpc/v5/even.py
+impacket-0.10.0/impacket/dcerpc/v5/even6.py
+impacket-0.10.0/impacket/dcerpc/v5/iphlp.py
+impacket-0.10.0/impacket/dcerpc/v5/lsad.py
+impacket-0.10.0/impacket/dcerpc/v5/lsat.py
+impacket-0.10.0/impacket/dcerpc/v5/mgmt.py
+impacket-0.10.0/impacket/dcerpc/v5/mimilib.py
+impacket-0.10.0/impacket/dcerpc/v5/ndr.py
+impacket-0.10.0/impacket/dcerpc/v5/nrpc.py
+impacket-0.10.0/impacket/dcerpc/v5/nspi.py
+impacket-0.10.0/impacket/dcerpc/v5/oxabref.py
+impacket-0.10.0/impacket/dcerpc/v5/par.py
+impacket-0.10.0/impacket/dcerpc/v5/rpch.py
+impacket-0.10.0/impacket/dcerpc/v5/rpcrt.py
+impacket-0.10.0/impacket/dcerpc/v5/rprn.py
+impacket-0.10.0/impacket/dcerpc/v5/rrp.py
+impacket-0.10.0/impacket/dcerpc/v5/samr.py
+impacket-0.10.0/impacket/dcerpc/v5/sasec.py
+impacket-0.10.0/impacket/dcerpc/v5/scmr.py
+impacket-0.10.0/impacket/dcerpc/v5/srvs.py
+impacket-0.10.0/impacket/dcerpc/v5/transport.py
+impacket-0.10.0/impacket/dcerpc/v5/tsch.py
+impacket-0.10.0/impacket/dcerpc/v5/wkst.py
+impacket-0.10.0/impacket/dhcp.py
+impacket-0.10.0/impacket/dns.py
+impacket-0.10.0/impacket/dot11.py
+impacket-0.10.0/impacket/dpapi.py
+impacket-0.10.0/impacket/eap.py
+impacket-0.10.0/impacket/ese.py
+impacket-0.10.0/impacket/examples/
+impacket-0.10.0/impacket/examples/__init__.py
+impacket-0.10.0/impacket/examples/ldap_shell.py
+impacket-0.10.0/impacket/examples/logger.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/
+impacket-0.10.0/impacket/examples/ntlmrelayx/__init__.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/__init__.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/dcsyncattack.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/httpattack.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/httpattacks/
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/httpattacks/__init__.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/httpattacks/adcsattack.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/imapattack.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/ldapattack.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/mssqlattack.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/rpcattack.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/attacks/smbattack.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/clients/
+impacket-0.10.0/impacket/examples/ntlmrelayx/clients/__init__.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/clients/dcsyncclient.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/clients/httprelayclient.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/clients/imaprelayclient.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/clients/ldaprelayclient.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/clients/mssqlrelayclient.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/clients/rpcrelayclient.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/clients/smbrelayclient.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/clients/smtprelayclient.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/__init__.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/httprelayserver.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/rawrelayserver.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/smbrelayserver.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/socksplugins/
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/socksplugins/__init__.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/socksplugins/http.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/socksplugins/https.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/socksplugins/imap.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/socksplugins/imaps.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/socksplugins/mssql.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/socksplugins/smb.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/socksplugins/smtp.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/socksserver.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/servers/wcfrelayserver.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/utils/
+impacket-0.10.0/impacket/examples/ntlmrelayx/utils/__init__.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/utils/config.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/utils/enum.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/utils/ssl.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/utils/targetsutils.py
+impacket-0.10.0/impacket/examples/ntlmrelayx/utils/tcpshell.py
+impacket-0.10.0/impacket/examples/os_ident.py
+impacket-0.10.0/impacket/examples/remcomsvc.py
+impacket-0.10.0/impacket/examples/rpcdatabase.py
+impacket-0.10.0/impacket/examples/secretsdump.py
+impacket-0.10.0/impacket/examples/serviceinstall.py
+impacket-0.10.0/impacket/examples/smbclient.py
+impacket-0.10.0/impacket/examples/utils.py
+impacket-0.10.0/impacket/helper.py
+impacket-0.10.0/impacket/hresult_errors.py
+impacket-0.10.0/impacket/http.py
+impacket-0.10.0/impacket/krb5/
+impacket-0.10.0/impacket/krb5/__init__.py
+impacket-0.10.0/impacket/krb5/asn1.py
+impacket-0.10.0/impacket/krb5/ccache.py
+impacket-0.10.0/impacket/krb5/constants.py
+impacket-0.10.0/impacket/krb5/crypto.py
+impacket-0.10.0/impacket/krb5/gssapi.py
+impacket-0.10.0/impacket/krb5/kerberosv5.py
+impacket-0.10.0/impacket/krb5/keytab.py
+impacket-0.10.0/impacket/krb5/pac.py
+impacket-0.10.0/impacket/krb5/types.py
+impacket-0.10.0/impacket/ldap/
+impacket-0.10.0/impacket/ldap/__init__.py
+impacket-0.10.0/impacket/ldap/ldap.py
+impacket-0.10.0/impacket/ldap/ldapasn1.py
+impacket-0.10.0/impacket/ldap/ldaptypes.py
+impacket-0.10.0/impacket/mapi_constants.py
+impacket-0.10.0/impacket/mqtt.py
+impacket-0.10.0/impacket/nmb.py
+impacket-0.10.0/impacket/nt_errors.py
+impacket-0.10.0/impacket/ntlm.py
+impacket-0.10.0/impacket/pcap_linktypes.py
+impacket-0.10.0/impacket/pcapfile.py
+impacket-0.10.0/impacket/smb.py
+impacket-0.10.0/impacket/smb3.py
+impacket-0.10.0/impacket/smb3structs.py
+impacket-0.10.0/impacket/smbconnection.py
+impacket-0.10.0/impacket/smbserver.py
+impacket-0.10.0/impacket/spnego.py
+impacket-0.10.0/impacket/structure.py
+impacket-0.10.0/impacket/system_errors.py
+impacket-0.10.0/impacket/tds.py
+impacket-0.10.0/impacket/uuid.py
+impacket-0.10.0/impacket/version.py
+impacket-0.10.0/impacket/winregistry.py
+impacket-0.10.0/impacket/wps.py
+impacket-0.10.0/impacket.egg-info/
+impacket-0.10.0/impacket.egg-info/PKG-INFO
+impacket-0.10.0/impacket.egg-info/SOURCES.txt
+impacket-0.10.0/impacket.egg-info/dependency_links.txt
+impacket-0.10.0/impacket.egg-info/requires.txt
+impacket-0.10.0/impacket.egg-info/top_level.txt
+impacket-0.10.0/requirements.txt
+impacket-0.10.0/setup.cfg
+impacket-0.10.0/setup.py
+impacket-0.10.0/tests/
+impacket-0.10.0/tests/ImpactPacket/
+impacket-0.10.0/tests/ImpactPacket/__init__.py
+impacket-0.10.0/tests/ImpactPacket/test_ICMP6.py
+impacket-0.10.0/tests/ImpactPacket/test_IP6.py
+impacket-0.10.0/tests/ImpactPacket/test_IP6_Address.py
+impacket-0.10.0/tests/ImpactPacket/test_IP6_Extension_Headers.py
+impacket-0.10.0/tests/ImpactPacket/test_TCP.py
+impacket-0.10.0/tests/ImpactPacket/test_TCP_bug_issue7.py
+impacket-0.10.0/tests/ImpactPacket/test_ethernet.py
+impacket-0.10.0/tests/SMB_RPC/
+impacket-0.10.0/tests/SMB_RPC/__init__.py
+impacket-0.10.0/tests/SMB_RPC/test_ldap.py
+impacket-0.10.0/tests/SMB_RPC/test_ndr.py
+impacket-0.10.0/tests/SMB_RPC/test_nmb.py
+impacket-0.10.0/tests/SMB_RPC/test_ntlm.py
+impacket-0.10.0/tests/SMB_RPC/test_rpch.py
+impacket-0.10.0/tests/SMB_RPC/test_rpcrt.py
+impacket-0.10.0/tests/SMB_RPC/test_secretsdump.py
+impacket-0.10.0/tests/SMB_RPC/test_smb.py
+impacket-0.10.0/tests/SMB_RPC/test_smbserver.py
+impacket-0.10.0/tests/SMB_RPC/test_spnego.py
+impacket-0.10.0/tests/SMB_RPC/test_wmi.py
+impacket-0.10.0/tests/__init__.py
+impacket-0.10.0/tests/conftest.py
+impacket-0.10.0/tests/data/
+impacket-0.10.0/tests/data/ccache-v1
+impacket-0.10.0/tests/data/ccache-v2
+impacket-0.10.0/tests/data/ccache-v3
+impacket-0.10.0/tests/data/ccache-v3-kirbi
+impacket-0.10.0/tests/data/ccache-v4
+impacket-0.10.0/tests/data/ccache-v4-kirbi
+impacket-0.10.0/tests/dcerpc/
+impacket-0.10.0/tests/dcerpc/__init__.py
+impacket-0.10.0/tests/dcerpc/test_bkrp.py
+impacket-0.10.0/tests/dcerpc/test_dcomrt.py
+impacket-0.10.0/tests/dcerpc/test_dhcpm.py
+impacket-0.10.0/tests/dcerpc/test_drsuapi.py
+impacket-0.10.0/tests/dcerpc/test_epm.py
+impacket-0.10.0/tests/dcerpc/test_even.py
+impacket-0.10.0/tests/dcerpc/test_even6.py
+impacket-0.10.0/tests/dcerpc/test_fasp.py
+impacket-0.10.0/tests/dcerpc/test_lsad.py
+impacket-0.10.0/tests/dcerpc/test_lsat.py
+impacket-0.10.0/tests/dcerpc/test_mgmt.py
+impacket-0.10.0/tests/dcerpc/test_mimilib.py
+impacket-0.10.0/tests/dcerpc/test_nrpc.py
+impacket-0.10.0/tests/dcerpc/test_par.py
+impacket-0.10.0/tests/dcerpc/test_rprn.py
+impacket-0.10.0/tests/dcerpc/test_rrp.py
+impacket-0.10.0/tests/dcerpc/test_samr.py
+impacket-0.10.0/tests/dcerpc/test_scmr.py
+impacket-0.10.0/tests/dcerpc/test_srvs.py
+impacket-0.10.0/tests/dcerpc/test_tsch.py
+impacket-0.10.0/tests/dcerpc/test_wkst.py
+impacket-0.10.0/tests/dcetests.cfg.template
+impacket-0.10.0/tests/dot11/
+impacket-0.10.0/tests/dot11/__init__.py
+impacket-0.10.0/tests/dot11/test_Dot11Base.py
+impacket-0.10.0/tests/dot11/test_Dot11Decoder.py
+impacket-0.10.0/tests/dot11/test_Dot11HierarchicalUpdate.py
+impacket-0.10.0/tests/dot11/test_FrameControlACK.py
+impacket-0.10.0/tests/dot11/test_FrameControlCFEnd.py
+impacket-0.10.0/tests/dot11/test_FrameControlCFEndCFACK.py
+impacket-0.10.0/tests/dot11/test_FrameControlCTS.py
+impacket-0.10.0/tests/dot11/test_FrameControlPSPoll.py
+impacket-0.10.0/tests/dot11/test_FrameControlRTS.py
+impacket-0.10.0/tests/dot11/test_FrameData.py
+impacket-0.10.0/tests/dot11/test_FrameManagement.py
+impacket-0.10.0/tests/dot11/test_FrameManagementAssociationRequest.py
+impacket-0.10.0/tests/dot11/test_FrameManagementAssociationResponse.py
+impacket-0.10.0/tests/dot11/test_FrameManagementAuthentication.py
+impacket-0.10.0/tests/dot11/test_FrameManagementDeauthentication.py
+impacket-0.10.0/tests/dot11/test_FrameManagementDisassociation.py
+impacket-0.10.0/tests/dot11/test_FrameManagementProbeRequest.py
+impacket-0.10.0/tests/dot11/test_FrameManagementProbeResponse.py
+impacket-0.10.0/tests/dot11/test_FrameManagementReassociationRequest.py
+impacket-0.10.0/tests/dot11/test_FrameManagementReassociationResponse.py
+impacket-0.10.0/tests/dot11/test_RadioTap.py
+impacket-0.10.0/tests/dot11/test_RadioTapDecoder.py
+impacket-0.10.0/tests/dot11/test_WEPDecoder.py
+impacket-0.10.0/tests/dot11/test_WEPEncoder.py
+impacket-0.10.0/tests/dot11/test_WPA.py
+impacket-0.10.0/tests/dot11/test_WPA2.py
+impacket-0.10.0/tests/dot11/test_helper.py
+impacket-0.10.0/tests/dot11/test_wps.py
+impacket-0.10.0/tests/misc/
+impacket-0.10.0/tests/misc/__init__.py
+impacket-0.10.0/tests/misc/test_ccache.py
+impacket-0.10.0/tests/misc/test_crypto.py
+impacket-0.10.0/tests/misc/test_dcerpc_v5_ndr.py
+impacket-0.10.0/tests/misc/test_dns.py
+impacket-0.10.0/tests/misc/test_dpapi.py
+impacket-0.10.0/tests/misc/test_ip6_address.py
+impacket-0.10.0/tests/misc/test_krb5_crypto.py
+impacket-0.10.0/tests/misc/test_structure.py
+impacket-0.10.0/tests/misc/test_utils.py
+impacket-0.10.0/tests/walkmodules.py
+impacket-0.10.0/tox.ini
+created virtual environment CPython3.10.5.final.0-64 in 87ms
+  creator CPython3Posix(dest=/home/kali/working/5head.sh/deps/impacket-0.10.0, clear=False, no_vcs_ignore=False, global=False)
+  seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=/root/.local/share/virtualenv)
+    added seed packages: pip==22.0.2, setuptools==59.6.0, wheel==0.37.1
+  activators BashActivator,CShellActivator,FishActivator,NushellActivator,PowerShellActivator,PythonActivator
+Processing /home/kali/working/5head.sh/deps/impacket-0.10.0
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting chardet
+  Using cached chardet-5.0.0-py3-none-any.whl (193 kB)
+Collecting flask>=1.0
+  Using cached Flask-2.1.2-py3-none-any.whl (95 kB)
+Collecting future
+  Using cached future-0.18.2-py3-none-any.whl
+Collecting ldap3!=2.5.0,!=2.5.2,!=2.6,>=2.5
+  Using cached ldap3-2.9.1-py2.py3-none-any.whl (432 kB)
+Collecting ldapdomaindump>=0.9.0
+  Using cached ldapdomaindump-0.9.3-py3-none-any.whl (18 kB)
+Collecting pyOpenSSL>=0.16.2
+  Using cached pyOpenSSL-22.0.0-py2.py3-none-any.whl (55 kB)
+Collecting pyasn1>=0.2.3
+  Using cached pyasn1-0.4.8-py2.py3-none-any.whl (77 kB)
+Collecting pycryptodomex
+  Using cached pycryptodomex-3.15.0-cp35-abi3-manylinux2010_x86_64.whl (2.3 MB)
+Collecting six
+  Using cached six-1.16.0-py2.py3-none-any.whl (11 kB)
+Collecting Werkzeug>=2.0
+  Using cached Werkzeug-2.1.2-py3-none-any.whl (224 kB)
+Collecting click>=8.0
+  Using cached click-8.1.3-py3-none-any.whl (96 kB)
+Collecting Jinja2>=3.0
+  Using cached Jinja2-3.1.2-py3-none-any.whl (133 kB)
+Collecting itsdangerous>=2.0
+  Using cached itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+Collecting dnspython
+  Using cached dnspython-2.2.1-py3-none-any.whl (269 kB)
+Collecting cryptography>=35.0
+  Using cached cryptography-37.0.2-cp36-abi3-manylinux_2_24_x86_64.whl (4.0 MB)
+Collecting cffi>=1.12
+  Using cached cffi-1.15.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (441 kB)
+Collecting MarkupSafe>=2.0
+  Using cached MarkupSafe-2.1.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+Collecting pycparser
+  Using cached pycparser-2.21-py2.py3-none-any.whl (118 kB)
+Building wheels for collected packages: impacket
+  Building wheel for impacket (setup.py): started
+  Building wheel for impacket (setup.py): finished with status 'done'
+  Created wheel for impacket: filename=impacket-0.10.0-py3-none-any.whl size=1452160 sha256=a5c1481050b1969a458aec66b79134c0f58f9b03b7e49d0be974abd926845c27
+  Stored in directory: /root/.cache/pip/wheels/34/ec/18/ea5ff544737d4f2979d0598e41f9540fa6578e3105b6dd9155
+Successfully built impacket
+Installing collected packages: pyasn1, Werkzeug, six, pycryptodomex, pycparser, MarkupSafe, ldap3, itsdangerous, future, dnspython, click, chardet, ldapdomaindump, Jinja2, cffi, flask, cryptography, pyOpenSSL, impacket
+Successfully installed Jinja2-3.1.2 MarkupSafe-2.1.1 Werkzeug-2.1.2 cffi-1.15.1 chardet-5.0.0 click-8.1.3 cryptography-37.0.2 dnspython-2.2.1 flask-2.1.2 future-0.18.2 impacket-0.10.0 itsdangerous-2.1.2 ldap3-2.9.1 ldapdomaindump-0.9.3 pyOpenSSL-22.0.0 pyasn1-0.4.8 pycparser-2.21 pycryptodomex-3.15.0 six-1.16.0
+Collecting dsinternals
+  Using cached dsinternals-1.2.4-py3-none-any.whl
+Installing collected packages: dsinternals
+Successfully installed dsinternals-1.2.4
+2022-07-01T14:00:08,800 Using pip 22.1.2 from /usr/local/lib/python3.10/dist-packages/pip (python 3.10)
+2022-07-01T14:00:08,800 Non-user install because site-packages writeable
+2022-07-01T14:00:08,943 Created temporary directory: /tmp/pip-ephem-wheel-cache-d6cul7un
+2022-07-01T14:00:08,943 Created temporary directory: /tmp/pip-build-tracker-zmilpn6p
+2022-07-01T14:00:08,943 Initialized build tracking at /tmp/pip-build-tracker-zmilpn6p
+2022-07-01T14:00:08,944 Created build tracker: /tmp/pip-build-tracker-zmilpn6p
+2022-07-01T14:00:08,944 Entered build tracker: /tmp/pip-build-tracker-zmilpn6p
+2022-07-01T14:00:08,944 Created temporary directory: /tmp/pip-install-t5_6kwq_
+2022-07-01T14:00:08,949 Requirement already satisfied: mitm6 in /usr/local/lib/python3.10/dist-packages (0.2.2)
+2022-07-01T14:00:08,950 Requirement already satisfied: scapy>=2.4 in /usr/lib/python3/dist-packages (from mitm6) (2.4.4)
+2022-07-01T14:00:08,951 Requirement already satisfied: twisted in /usr/lib/python3/dist-packages (from mitm6) (22.4.0)
+2022-07-01T14:00:08,951 Requirement already satisfied: netifaces in /usr/lib/python3/dist-packages (from mitm6) (0.11.0)
+2022-07-01T14:00:08,983 Created temporary directory: /tmp/pip-unpack-r90rc3lj
+2022-07-01T14:00:09,236 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+2022-07-01T14:00:09,238 Remote version of pip: 22.1.2
+2022-07-01T14:00:09,238 Local version of pip:  22.1.2
+2022-07-01T14:00:09,239 Was pip installed by pip? True
+2022-07-01T14:00:09,239 Removed build tracker: '/tmp/pip-build-tracker-zmilpn6p'
+created virtual environment CPython3.10.5.final.0-64 in 86ms
+  creator CPython3Posix(dest=/home/kali/working/5head.sh/deps/LdapRelayScan, clear=False, no_vcs_ignore=False, global=False)
+  seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=/root/.local/share/virtualenv)
+    added seed packages: pip==22.0.2, setuptools==59.6.0, wheel==0.37.1
+  activators BashActivator,CShellActivator,FishActivator,NushellActivator,PowerShellActivator,PythonActivator
+Collecting dnspython
+  Using cached dnspython-2.2.1-py3-none-any.whl (269 kB)
+Collecting ldap3
+  Using cached ldap3-2.9.1-py2.py3-none-any.whl (432 kB)
+Collecting msldap
+  Using cached msldap-0.3.38-py3-none-any.whl (144 kB)
+Collecting pyasn1>=0.4.6
+  Using cached pyasn1-0.4.8-py2.py3-none-any.whl (77 kB)
+Collecting wcwidth
+  Using cached wcwidth-0.2.5-py2.py3-none-any.whl (30 kB)
+Collecting minikerberos>=0.2.20
+  Using cached minikerberos-0.2.20-py3-none-any.whl (96 kB)
+Collecting asysocks>=0.1.7
+  Using cached asysocks-0.1.7-py3-none-any.whl (50 kB)
+Collecting unicrypto>=0.0.5
+  Using cached unicrypto-0.0.8-py3-none-any.whl (94 kB)
+Collecting asn1crypto>=1.3.0
+  Using cached asn1crypto-1.5.1-py2.py3-none-any.whl (105 kB)
+Collecting tqdm
+  Using cached tqdm-4.64.0-py2.py3-none-any.whl (78 kB)
+Collecting winacl>=0.1.2
+  Using cached winacl-0.1.3-py3-none-any.whl (48 kB)
+Collecting prompt-toolkit>=3.0.2
+  Using cached prompt_toolkit-3.0.30-py3-none-any.whl (381 kB)
+Collecting oscrypto>=1.2.1
+  Using cached oscrypto-1.3.0-py2.py3-none-any.whl (194 kB)
+Collecting pycryptodomex
+  Using cached pycryptodomex-3.15.0-cp35-abi3-manylinux2010_x86_64.whl (2.3 MB)
+Installing collected packages: wcwidth, pyasn1, asn1crypto, winacl, tqdm, pycryptodomex, prompt-toolkit, oscrypto, ldap3, dnspython, asysocks, unicrypto, minikerberos, msldap
+Successfully installed asn1crypto-1.5.1 asysocks-0.1.7 dnspython-2.2.1 ldap3-2.9.1 minikerberos-0.2.20 msldap-0.3.38 oscrypto-1.3.0 prompt-toolkit-3.0.30 pyasn1-0.4.8 pycryptodomex-3.15.0 tqdm-4.64.0 unicrypto-0.0.8 wcwidth-0.2.5 winacl-0.1.3
+2022-07-01T14:00:12,919 Using pip 22.1.2 from /usr/local/lib/python3.10/dist-packages/pip (python 3.10)
+2022-07-01T14:00:12,919 Non-user install because site-packages writeable
+2022-07-01T14:00:13,066 Created temporary directory: /tmp/pip-ephem-wheel-cache-yf8pr66_
+2022-07-01T14:00:13,066 Created temporary directory: /tmp/pip-build-tracker-yjm8twp0
+2022-07-01T14:00:13,066 Initialized build tracking at /tmp/pip-build-tracker-yjm8twp0
+2022-07-01T14:00:13,066 Created build tracker: /tmp/pip-build-tracker-yjm8twp0
+2022-07-01T14:00:13,066 Entered build tracker: /tmp/pip-build-tracker-yjm8twp0
+2022-07-01T14:00:13,066 Created temporary directory: /tmp/pip-install-8_1xg9rd
+2022-07-01T14:00:13,072 Requirement already satisfied: bloodhound in /usr/local/lib/python3.10/dist-packages (1.2.1)
+2022-07-01T14:00:13,075 Requirement already satisfied: dnspython in /usr/lib/python3/dist-packages (from bloodhound) (2.0.0)
+2022-07-01T14:00:13,075 Requirement already satisfied: pyasn1>=0.4 in /usr/lib/python3/dist-packages (from bloodhound) (0.4.8)
+2022-07-01T14:00:13,076 Requirement already satisfied: impacket>=0.9.17 in /usr/local/lib/python3.10/dist-packages (from bloodhound) (0.10.0)
+2022-07-01T14:00:13,076 Requirement already satisfied: future in /usr/lib/python3/dist-packages (from bloodhound) (0.18.2)
+2022-07-01T14:00:13,076 Requirement already satisfied: ldap3!=2.5.0,!=2.5.2,!=2.6,>=2.5 in /usr/lib/python3/dist-packages (from bloodhound) (2.8.1)
+2022-07-01T14:00:13,080 Requirement already satisfied: flask>=1.0 in /usr/lib/python3/dist-packages (from impacket>=0.9.17->bloodhound) (1.1.2)
+2022-07-01T14:00:13,081 Requirement already satisfied: pycryptodomex in /usr/lib/python3/dist-packages (from impacket>=0.9.17->bloodhound) (3.11.0)
+2022-07-01T14:00:13,081 Requirement already satisfied: chardet in /usr/lib/python3/dist-packages (from impacket>=0.9.17->bloodhound) (4.0.0)
+2022-07-01T14:00:13,082 Requirement already satisfied: six in /usr/lib/python3/dist-packages (from impacket>=0.9.17->bloodhound) (1.16.0)
+2022-07-01T14:00:13,082 Requirement already satisfied: ldapdomaindump>=0.9.0 in /usr/lib/python3/dist-packages (from impacket>=0.9.17->bloodhound) (0.9.3)
+2022-07-01T14:00:13,083 Requirement already satisfied: pyOpenSSL>=0.16.2 in /usr/lib/python3/dist-packages (from impacket>=0.9.17->bloodhound) (20.0.1)
+2022-07-01T14:00:13,091 Created temporary directory: /tmp/pip-unpack-d8nophh8
+2022-07-01T14:00:13,374 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+2022-07-01T14:00:13,376 Remote version of pip: 22.1.2
+2022-07-01T14:00:13,376 Local version of pip:  22.1.2
+2022-07-01T14:00:13,376 Was pip installed by pip? True
+2022-07-01T14:00:13,376 Removed build tracker: '/tmp/pip-build-tracker-yjm8twp0'
