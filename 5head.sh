@@ -9,8 +9,8 @@ print_usage() {
           -i INTERFACE           Interface to use for network traffic
 
         useful arguments:
-          -d  DOMAIN             Specific domain to perform authentication attempts on (NOT IMPLEMENTED YET)
-	  -c  DOMAIN CONTROLLER  Domain controller (ip) to use for checks
+          -d  DOMAIN             Specific domain to perform authentication attempts on
+	  -c  DOMAIN CONTROLLER  Domain controller (IP/FQDN) to use for checks
 	  -u  USERNAME           Username to use for authentication
           -p  PASSWORD           Password to use for authentication
 
