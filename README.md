@@ -3,7 +3,7 @@
 </p>
 
 # 5head.sh
-5head.sh is a wrapper of a series of common network penetration testing toolsets within a portable and modular scripting platform that quickly allows network penetration testers to perform repeatable tasks. This aims to allow an operator to spend less time on boring stuff and more time on exploring discovered attack paths .
+5head.sh is a wrapper of a series of common network penetration testing toolsets within a portable and modular scripting platform that quickly allows network penetration testers to perform repeatable tasks. This aims to allow an operator to spend less time on boring stuff and more time on exploring discovered attack paths.
 
 The [tmux](https://github.com/tmux/tmux/wiki) terminal multiplexer is heavily utilized for job management, with a BYOT.conf (Bring-Your-Own-Tmux.conf) mindset.
 
