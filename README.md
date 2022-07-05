@@ -2,14 +2,14 @@
   <img src="https://user-images.githubusercontent.com/51839088/177005677-e86231f7-1843-47f8-a58d-3fb59bade7ca.png">
 </p>
 
-# 5head.sh
-5head.sh is a wrapper of a series of common network penetration testing toolsets within a portable and modular scripting platform that quickly allows network penetration testers to perform repeatable tasks. This aims to allow an operator to spend less time on boring stuff and more time on exploring discovered attack paths.
+# 5head
+5head is a wrapper of a series of common network penetration testing toolsets within a portable and modular scripting platform that quickly allows network penetration testers to perform repeatable tasks. This aims to allow an operator to spend less time on boring stuff and more time on exploring discovered attack paths.
 
 The [tmux](https://github.com/tmux/tmux/wiki) terminal multiplexer is heavily utilized for job management, with a BYOT.conf (Bring-Your-Own-Tmux.conf) mindset.
 
 Development and testing was performed within a fresh install of Kali Linux to simulate the broadest use case. It has not been tested on alternate *NIX platforms.
 
-This repo also contains a `setup.sh` installation script, which will configure the neccessary copies of tools needed for 5head.sh's modules. This allows operators to still utilize alternate versions/forks of tooling that will not conflict with the copies used by 5head.sh.
+This repo also contains a `setup.sh` installation script, which will configure the neccessary copies of tools needed for 5head's modules. This allows operators to still utilize alternate versions/forks of tooling that will not conflict with the copies used by 5head.
 
 Thanks to the following people/projects that are contained within this wrapper:
 - https://github.com/Porchetta-Industries/CrackMapExec ([@byt3bl33d3r](https://twitter.com/byt3bl33d3r)/[@mpgn_x64](https://twitter.com/mpgn_x64))
@@ -24,15 +24,15 @@ Thanks to the following people/projects that are contained within this wrapper:
 - https://github.com/fox-it/BloodHound.py (also [@_dirkjan](https://twitter.com/_dirkjan))
 
 ## Installation
-To begin installation of 5head.sh, clone the repo and ensure the scripts are executable:
+To begin installation of 5head, clone the repo and ensure the scripts are executable:
 ```bash
-git clone https://github.com/Renegade-Labs/5head.sh
-cd 5head.sh
+git clone https://github.com/Renegade-Labs/5head
+cd 5head
 chmod +x 5head.sh setup.sh
 ```
 Next you will need to run `setup.sh` as root:
 ```python
-┌──(root💀kali)-[/home/kali/working/5head.sh]
+┌──(root💀kali)-[/home/kali/working/5head]
 └─# ./setup.sh                                                          
 [*] Logging verbose install output in install.log...
 [*] Installing package dependencies...
@@ -66,9 +66,9 @@ Now simply run `./5head.sh`
  / _, _/  __/ / / /  __/ /_/ / /_/ / /_/ /  __/  / /___/ /_/ / /_/ (__  )
 /_/ |_|\___/_/ /_/\___/\__, /\__,_/\__,_/\___/  /_____/\__,_/_.___/____/
                       /____/
-[*] Starting 5head.sh...
+[*] Starting 5head...
 
-~ 5head.sh ~
+~ 5head ~
 1) Enum
 2) Poison
 3) AD
@@ -78,9 +78,9 @@ Choose a module:
 
 ## Usage
 ```python
-$ ./5head.sh -h
+$ ./5head -h
 
-        5head.sh usage: [-h] [-t targetfile] [-i interface] [-d domain] [-c domain controller] [-u username] [-p password] [-h help]
+        5head usage: [-h] [-t targetfile] [-i interface] [-d domain] [-c domain controller] [-u username] [-p password] [-h help]
 
         mandatory arguments:
           -t TARGETFILE          Newline-delimmited list of targets. Accepts CIDRs or ranges (192.168.0.1-255)
@@ -97,7 +97,7 @@ $ ./5head.sh -h
 ```
 
 ### Recommended Usage
-It is heavily recommended to supply the following arguments to 5head.sh:
+It is heavily recommended to supply the following arguments to 5head:
 - `-d DOMAIN`
 - `-c DOMAIN CONTOLLER`
 - `-u USERNAME`
@@ -108,11 +108,11 @@ If these are not supplied, the toolset will prompt for you to provide them when 
 For `-c DOMAIN CONTOLLER` it is recommended to utilize the FQDN of the domain contoller you would like to target. This will require `/etc/resolv.conf` to be configured with a working DNS server (often times the same domain contoller).
 
 ## Modules
-Functionality within 5head.sh is currentlly broken into three "modules", each containing a series of automated tasks. This is likely to change as more functionality is added in the future.
+Functionality within 5head is currentlly broken into three "modules", each containing a series of automated tasks. This is likely to change as more functionality is added in the future.
 
 ### Enum
 #### Packet capture
-Uses `tcpdump` to perform a packet capture on the interface specified when running 5head.sh initially.
+Uses `tcpdump` to perform a packet capture on the interface specified when running 5head initially.
 
 Output is written to `loot/packet_capture.pcap`.
 
@@ -328,7 +328,7 @@ Currently the following objectives are being pursued for the script:
 - More ADCS functionality
 
 ## Support
-5head.sh heavily utilizes CrackMapExec for much of the activity it performs. If you are feeling generous please support CrackMapExec and other open-source security tools through a subscription to [Porchetta Industries](https://porchetta.industries/).
+5head heavily utilizes CrackMapExec for much of the activity it performs. If you are feeling generous please support CrackMapExec and other open-source security tools through a subscription to [Porchetta Industries](https://porchetta.industries/).
 
 ## Release Log
 - `xx/xx/xxxx` - Version 1.0 released
