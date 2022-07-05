@@ -326,9 +326,10 @@ Currently the following objectives are being pursued for the script:
 - global logging capabilities
 - authentication coercion checking per-host (ShadowCoerce, PetitPotam, Print Spooler, DFSCoerce)
 - More ADCS functionality
+- Updating to utilize CrackMapExec 5.3.0
 
 ## Support
 5head heavily utilizes CrackMapExec for much of the activity it performs. If you are feeling generous please support CrackMapExec and other open-source security tools through a subscription to [Porchetta Industries](https://porchetta.industries/).
 
 ## Release Log
-- `xx/xx/xxxx` - Version 1.0 released
+- `07/05/2022` - Version 1.0 released
