@@ -2,7 +2,7 @@
 
 print_usage() {
         printf '
-        5head.sh usage: [-h] [-t targetfile] [-i interface] [-d domain] [-c domain controller] [-u username] [-p password] [-h help]
+        5head usage: [-h] [-t targetfile] [-i interface] [-d domain] [-c domain controller] [-u username] [-p password] [-h help]
 
         mandatory arguments:
           -t TARGETFILE          Newline-delimmited list of targets. Accepts CIDRs or ranges (192.168.0.1-255)
@@ -63,7 +63,7 @@ if [ -z "${TMUX}" ]; then
 	export dc=$dc
         export username=$username
         export password=$password
-        export PROMPT="%F{9}5head.sh%f > "
+        export PROMPT="%F{9}5head%f > "
         window=0
         tmux new-session -d -s $session ./5head.sh
         tmux rename-window -t $session:$window 'main'
