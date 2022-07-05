@@ -218,7 +218,7 @@ ntlmrelayx.py -tf/-t <target file or single target> -smb2support --delegate-acce
 #### NOT IMPLEMENTED: MSSQL: Responder + ntlmrelayx
 TODO
 
-#### >NOT IMPLEMENTED: MULTI: Responder + ntlmrelayx
+#### NOT IMPLEMENTED: MULTI: Responder + ntlmrelayx
 TODO
 
 #### LDAP: mitm6 + ntlmrelayx (socks)
