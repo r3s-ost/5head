@@ -761,3 +761,4 @@ menu
 # 3. implement ntlmrelayx + mssql (need testing)
 # 4. implement ntlmrelayx multi protocol (need testing)
 # 5. Write coerced auth checker
+# 6. update to CrackMapExec 5.3.0
